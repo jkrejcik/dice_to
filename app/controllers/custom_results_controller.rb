@@ -1,0 +1,2 @@
+class CustomResultsController < ApplicationController
+end
