@@ -34,12 +34,14 @@ url = "https://tmdb.lewagon.com/movie/top_rated"
 movies = URI.open(url).read
 data = JSON.parse(movies)
 
+movie_genres = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Family", "Horror"]
+
 data["results"].each do |movie|
   new_movie = Movie.new
   new_movie.title = movie["title"]
   new_movie.overview = movie["overview"]
   new_movie.image = "https://image.tmdb.org/t/p/original" + movie["poster_path"]
-
+  new_movie.genre = movie_genres.sample
   year = movie["release_date"].match(/\d{4}/)
   new_movie.year = year[0].to_i
   new_movie.save
