@@ -22,7 +22,7 @@ user2 = User.create(first_name: "Ronan", last_name: "Boyle", email: "ronanoboyle
   password_confirmation: "password")
 puts "- #{user2.first_name}"
 
-user3 = User.create(first_name: "Jaromir", last_name: "JagrSidor", email: "jaroslav.sidor.ml@gmail.com", password: "password",
+user3 = User.create(first_name: "Jaro", last_name: "JagrSidorNovy", email: "jaroslav.sidor.ml@gmail.com", password: "password",
   password_confirmation: "password")
 puts "- #{user3.first_name}"
 
