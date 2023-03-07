@@ -1,31 +1,24 @@
-.circle {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    background-color: rgb(44, 108, 128);
-    position: relative;
-  }
-  .circle::after {
-    content: " ";
-    position: absolute;
-    display: block;
-    background-color: #fff;
-    height: 10px;
-    margin-top: -5px;
-    top: 50%;
-    left: 5px;
-    right: 5px;
-    z-index: 9;
-  }
-  .circle::before {
-    content: " ";
-    position: absolute;
-    display: block;
-    background-color: #fff;
-    width: 10px;
-    margin-left: -5px;
-    left: 50%;
-    top: 5px;
-    bottom: 5px;
-    z-index: 9;
-  }
+.plus-button {
+  --b: 9px; /* the thickness */
+  width: 36px; /* the size */
+  aspect-ratio: 1;
+  border: 0px solid lightcoral; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg,lightcoral 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  display: inline-block;
+}
+
+.plus-button:hover {
+  --b: 9px; /* the thickness */
+  width: 36px; /* the size */
+  aspect-ratio: 1;
+  border: 0px solid coral; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg, coral 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  display: inline-block;
+}
+
