@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # resources :custom_results, path: '/custom_results/new'
+  get "custom", to: "custom_results#new", as: :custom_results
+
 end

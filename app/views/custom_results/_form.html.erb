@@ -1,0 +1,22 @@
+<div class="mt-4">
+    <%= simple_form_for(@custom) do |f| %>
+        <%= f.input :question %>
+        <%= f.button :submit, class: "btn btn-primary" %> 
+    <% end %>
+
+    <div class="mt-4">
+      <%= simple_form_for(@custom) do |f| %>
+        <h6>Option 1</h6>
+        <%= f.input :question, label: false %>
+        <%= f.button :submit, class: "circle" %> 
+      <% end %>
+    </div>
+
+    <div class="mt-4">
+      <%= simple_form_for(@custom) do |f| %>
+        <h6>Option 2</h6>
+        <%= f.input :question, label: false %>
+        <%= f.button :submit, class: "btn btn-primary" %> 
+      <% end %>
+    </div>
+</div>
