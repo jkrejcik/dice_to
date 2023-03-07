@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  get 'results/index'
-  get 'results/edit'
-  get 'results/update'
   devise_for :users
+
+  # Routes for pages
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
-
+  get "categories", to: "pages#category"
 
   # Routes for results of all rolls
   get "history", to: "results#index"
   get "history/:id/edit", to: "results#edit", as: :edit_history
   patch "history/:id", to: "results#update"
+
+  # Routes for movie category
+  get "movie-questions", to: "movie_results#question"
+  post "movie-questions", to: "movie_results#create_suggestion"
+  get "suggestion", to: "movie_results#show"
+  get "movie-accept", to: "movie_results#create"
+
 end
