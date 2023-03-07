@@ -8,4 +8,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+
+
+  # Routes for results of all rolls
+  get "history", to: "results#index"
+  get "history/:id/edit", to: "results#edit", as: :edit_history
+  patch "history/:id", to: "results#update"
 end
