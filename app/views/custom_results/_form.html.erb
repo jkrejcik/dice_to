@@ -1,10 +1,14 @@
 <div class="">
     <%= simple_form_for(@custom) do |f| %>
-        <%= f.input :question %>
-        <div class="d-flex">
+        <%= f.text_field :question, autofocus: true, class: "form-field", placeholder: 'Enter question - What to eat?' %>
+        <div class="d-flex mt-3">
           <%= f.submit "Create Question", class: "btn btn-primary flex-fill" %>
         </div>
     <% end %>
+
+    <%
+=begin
+%>
 
     <div class="mt-4">
       <%= simple_form_for(@custom) do |f| %>
@@ -28,9 +32,13 @@
             <%= f.input :question, label: false %>
           </div>
           <div class="ms-3">
-            <%= f.submit "", class: "minus-button" %> 
+            <%= f.submit "", class: "-button" %> 
           </div>
         </div>
       <% end %>
     </div>
+
+    <%
+=end
+%>
 </div>

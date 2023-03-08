@@ -2,29 +2,31 @@
 
     <%= render 'form' %>
 
-    <div class="d-flex justify-content-center mt-5">
-        <%= link_to "ROLL", custom_results_path(@custom), class: "big-button" %>
-    </div>
+    <div class="mt-5">
+        <%= form_with model: @custom_result, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
+        <template data-nested-form-target="template">
+            <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option_fields| %>
+              <%= render "option_form_html", f: option_fields %>
+            <% end %>
+        </template>
+            <div>
+                <%= f.fields_for :options do |option_fields| %>
+                    <div>
+                        <div>
+                            <%= render "option_form_html", f: option_fields %>
+                        </div>
+                    <div>
+                <% end %>
+            </div>
+        </div>
 
+        <!-- Inserted elements will be injected before that target. -->
+        <div data-nested-form-target="target"></div>
 
-    <%= form_with model: @custom_result, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
-      <template data-nested-form-target="template">
-        <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option_fields| %>
-         <%= render "option_form_html", f: option_fields %>
+        <div class="d-flex justify-content-center mt-5">
+            <%= f.submit 'ROLL', class: "big-button" %>
+        </div>
         <% end %>
-      </template>
-
-      <%= f.fields_for :options do |option_fields| %>
-       <%= render "option_form_html", f: option_fields %>
-      <% end %>
-
-      <!-- Inserted elements will be injected before that target. -->
-      <div data-nested-form-target="target"></div>
-
-      <button type="button" data-action="nested-form#add" class="plus-button"></button> 
-      <div class="d-flex justify-content-center mt-5">
-        <%= f.submit 'ROLL', class: "big-button" %>
-      </div>
-    <% end %>
+    </div>
 
 </div>

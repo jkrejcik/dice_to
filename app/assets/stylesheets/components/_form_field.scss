@@ -1,11 +1,11 @@
 .form-field {
   background-color: #f4f4f4;
-  display: flex;  
-  flex-grow: 1;
   border: 0px;
   padding: 2px 3px 0 3px;
   font-size: 24px;
   color: darkslategrey;
+  border-bottom: 0.5px solid rgba(119, 136, 153, 0.574);
+  width: 100%;
 }
 
 .form-field:focus {
