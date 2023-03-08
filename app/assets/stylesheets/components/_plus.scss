@@ -1,0 +1,24 @@
+.plus-button {
+  --b: 9px; /* the thickness */
+  width: 36px; /* the size */
+  aspect-ratio: 1;
+  border: 0px solid lightcoral; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg,lightcoral 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  display: inline-block;
+}
+
+.plus-button:hover {
+  --b: 9px; /* the thickness */
+  width: 36px; /* the size */
+  aspect-ratio: 1;
+  border: 0px solid coral; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg, coral 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  display: inline-block;
+}
+

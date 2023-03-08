@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get "suggestion", to: "movie_results#show"
   get "movie-accept", to: "movie_results#create"
 
+  # Routes for custom process
+  get "custom", to: "custom_results#new", as: :custom_results
 end
