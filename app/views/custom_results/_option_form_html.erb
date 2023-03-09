@@ -1,6 +1,5 @@
-<div class="nested-form-wrapper" data-new-record="">
-  <%# <%= f.object.new_record? %>
-  <div class="d-flex justify-content-between">
+<div class="nested-form-wrapper" data-new-record="f.object.new_record?">
+  <div class="d-flex justify-content-between" data-nested-form-target="new_record">
     <div class="flex-grow-1">
       <%= f.text_field :input, autofocus: true, class: "form-field", placeholder: 'Enter an option here...' %>
     </div>
