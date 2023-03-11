@@ -1,0 +1,27 @@
+<div class="container-history px-3">
+  <h1>Timeline</h1>
+  <% @movie_results.each do |result| %>
+    <div class="card mb-2">
+      <div class="card-header">
+        <%= result.movie.genre %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= result.movie.title %></h5>
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-between">
+        <span>
+        <% if result.rating.nil? %>
+         <%= link_to "Rate your experience!", history_path %>
+        <% else %>
+         <% result.rating.times do %>
+             <i class="fa-solid fa-star"></i>
+          <% end %>
+          <% if result.rating - 5 %>
+
+        <% end %>
+        </span>
+        <span><%= ((@today - result.movie.created_at) / 86400).round %> days ago</span>
+      </div>
+    </div>
+  <% end %>
+</div>
