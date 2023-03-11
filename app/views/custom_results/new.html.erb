@@ -1,32 +1,6 @@
 <div class="container w-75 mt-5">
-
-    <%= render 'form' %>
-
-    <div class="mt-5">
-        <%= form_with model: @custom_result, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |f| %>
-        <template data-nested-form-target="template">
-            <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option_fields| %>
-              <%= render "option_form_html", f: option_fields %>
-            <% end %>
-        </template>
-            
-        <%= f.fields_for :options do |option_fields| %>
-                    
-        <div>
-            <%= render "option_form_html", f: option_fields %>
-        </div>
-                    
-        <% end %>
-            
-        
-
-        <!-- Inserted elements will be injected before that target. -->
-        <div data-nested-form-target="target"></div>
-
-        <div class="d-flex justify-content-center mt-5">
-            <%= f.submit 'ROLL', class: "big-button" %>
-        </div>
-        <% end %>
-    </div>
+  
+  <%= render 'form' %>
 
 </div>
+

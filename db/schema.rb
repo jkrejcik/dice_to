@@ -17,8 +17,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_140254) do
   create_table "custom_results", force: :cascade do |t|
     t.string "question"
     t.string "answer"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_custom_results_on_user_id"
   end
 
   create_table "movie_results", force: :cascade do |t|
