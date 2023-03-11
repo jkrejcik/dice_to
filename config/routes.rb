@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   # Routes for custom process
   get "custom", to: "custom_results#new", as: :custom_results
   post "custom", to: "custom_results#create"
+  get "custom/:id", to: "custom_results#show", as: :custom_result
 end

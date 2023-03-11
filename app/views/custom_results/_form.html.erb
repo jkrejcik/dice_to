@@ -1,15 +1,13 @@
 <div class="mt-5">
   <%= form_for @custom_result, url: custom_results_path, method: :post do |f| %>
     <div data-controller="nested-form" data-nested-form-target="all">
-      <%= f.text_field :question, autofocus: true, class: "form-field mb-5", placeholder: 'Enter question - What to eat?' %>
+      <%= f.text_field :question, required: true, autofocus: true, class: "form-field mb-5", placeholder: 'Enter question - What to eat?' %>
         <div data-nested-form-target="form">
-          <%= f.fields_for :option do |option_subform| %>
+          <%= f.fields_for :options, Option.new, child_index: 1 do |option_subform| %>
             <div class="d-flex mt-4" data-nested-form-target="line" id="1">
-              <%# <input type="text" placeholder="Enter an option here..." name="my-input" class="form-field required"> %>
-              <%= option_subform.text_field :input, include_id: true, autofocus: true, class: "form-field", placeholder: 'Enter an option here...'%>
+              <%= option_subform.text_field :input, required: true, autofocus: true, class: "form-field", placeholder: 'Enter an option here...'%>
               <div class="d-flex ms-3">
                 <button type="button" data-action="click->nested-form#toggle" class="plus-button" data-nested-form-target="sign"></button>
-                <%# <button type="button" data-action="click->nested-form#remove" class="minus-button d-none" data-nested-form-target="minus"></button> %>
               </div>
             </div>
           <% end %>
@@ -20,3 +18,4 @@
     </div>
   <% end %>
 </div>
+
