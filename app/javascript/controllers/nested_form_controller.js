@@ -22,7 +22,9 @@ export default class extends Controller {
       this.counter += 1
       let newLine = currentLine.cloneNode(true)
       newLine.id = this.counter
-      newLine.firstChild.nextElementSibling.name = `custom_result[options_attributes][${this.counter}][input]`
+      let newTextField = newLine.firstChild.nextElementSibling 
+      newTextField.value = ""
+      newTextField.name = `custom_result[options_attributes][${this.counter}][input]`
       if (this.formTarget.children.length > 1) {
         currentLine.insertAdjacentElement("afterend", newLine) 
       } else {
