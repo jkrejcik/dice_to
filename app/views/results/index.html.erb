@@ -3,7 +3,7 @@
   <% @movie_results.each do |result| %>
     <div class="card mb-2">
       <div class="card-header">
-        <%= result.movie.genre %>
+        What to watch?
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= result.movie.title %></h5>
@@ -14,10 +14,8 @@
          <%= link_to "Rate your experience!", history_path %>
         <% else %>
          <% result.rating.times do %>
-             <i class="fa-solid fa-star"></i>
+             <i class="fa-solid fa-star star-gold"></i>
           <% end %>
-          <% if result.rating - 5 %>
-
         <% end %>
         </span>
         <span><%= ((@today - result.movie.created_at) / 86400).round %> days ago</span>
