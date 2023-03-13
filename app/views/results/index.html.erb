@@ -1,8 +1,36 @@
 <div class="container-history px-3">
   <h1>Timeline</h1>
+  <% @custom_results.each do |result| %>
+    <div class="card mb-2">
+      <div class="card-header header-custom">
+        <%= result.question %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= result.answer %></h5>
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-end">
+        <span>
+          <% case (@today - result.created_at).round %>
+            <% when 0..60 %>
+              < 1 minute ago
+            <% when 61..3600 %>
+              <%= ((@today - result.created_at) / 60).round %> minutes ago
+            <% when 3601..7199 %>
+              1 hour ago
+            <% when 7200..86400 %>
+              <%= ((@today - result.created_at) / 3600).round %> hours ago
+             <% when 86401..172799 %>
+              yesterday
+            <% else %>
+            <%= ((@today - result.created_at) / 86400).round %> days ago
+          <% end %>
+        </span>
+      </div>
+    </div>
+  <% end %>
   <% @movie_results.each do |result| %>
     <div class="card mb-2">
-      <div class="card-header">
+      <div class="card-header header-movie">
         What to watch?
       </div>
       <div class="card-body">
@@ -10,15 +38,35 @@
       </div>
       <div class="card-footer text-muted d-flex justify-content-between">
         <span>
-        <% if result.rating.nil? %>
-         <%= link_to "Rate your experience!", history_path %>
-        <% else %>
-         <% result.rating.times do %>
-             <i class="fa-solid fa-star star-gold"></i>
+          <% if result.rating.nil? %>
+            <%= link_to "Rate your experience!", history_path %>
+          <% else %>
+            <% result.rating.times do %>
+              <i class="fa-solid fa-star star-gold"></i>
+            <% end %>
+          <% if result.rating != 5 %>
+              <% (5 - result.rating).times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
         </span>
-        <span><%= ((@today - result.movie.created_at) / 86400).round %> days ago</span>
+        <span>
+          <% case (@today - result.created_at).round %>
+            <% when 0..60 %>
+              < 1 minute ago
+            <% when 61..3600 %>
+              <%= ((@today - result.created_at) / 60).round %> minutes ago
+            <% when 3601..7199 %>
+              1 hour ago
+            <% when 7200..86400 %>
+              <%= ((@today - result.created_at) / 3600).round %> hours ago
+             <% when 86401..172799 %>
+              yesterday
+            <% else %>
+            <%= ((@today - result.created_at) / 86400).round %> days ago
+          <% end %>
+        </span>
       </div>
     </div>
   <% end %>
