@@ -1,4 +1,8 @@
 class MovieResultsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create_suggestion
+  # before_action :movie_result_params, only: :create_suggestion
+
+
   def question
   end
 
@@ -26,11 +30,14 @@ class MovieResultsController < ApplicationController
 
     # As @movie_suggestion was array (.sample) picks random object Movie
     @result.movie = @movie_suggestion.sample
+    @result.time_taken = params[:time_taken]
+    
     @result.rating = rand(1..5)
 
     # If succesfully saved ("Action" checkbox has to be clicked) user is redirected to /suggestion page (internaly show.html.erb)
     if @result.save
       redirect_to suggestion_path
+      
     else
       render "question"
     end
@@ -39,8 +46,15 @@ class MovieResultsController < ApplicationController
   def show
     # Because we already saved in create_suggestion action result database we can use it here
     @movie_result = MovieResult.where(user: current_user).last
+    
   end
 
   def create
   end
+
+  # private
+
+  # # def movie_result_params
+  # #   params.require(:movie_result).permit(:time_taken, :question_mood, :question_text, :question_genre2)
+  # # end
 end
