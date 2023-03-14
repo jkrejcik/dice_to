@@ -1,22 +1,44 @@
-<form action="/movie-questions" method="post">
-  <label for="question_text">Example of text input:</label><br>
-  <input type="text" id="question_text" name="question_text"><br>
-
-  <p>What genre of films do you like?</p>
-  <input type="checkbox" name="question_genre1" value="Action">
+<%# <form action="/movie-questions" method="post"> %>
+<%= form_with url: movie_results_path, method: :post do |f|%>
+ <h2>What genre of films do you like?</h2>
+  <%# <input type="checkbox" name="question_genre1" value="Action">
   <label for="question_genre1">Action</label><br>
   <input type="checkbox" name="question_genre2" value="Comedy">
-  <label for="question_genre2">Comedy</label>
+  <label for="question_genre2">Comedy</label><br>
+  <input type="checkbox" name="question_genre3" value="Drama">
+  <label for="question_genre3">Drama</label><br>
+  <input type="checkbox" name="question_genre4" value="Horror">
+  <label for="question_genre4">Horror</label> %>
+  <% @movie_genres.each do |genre| %>
+  <div>
+    <%= label_tag genre %>
+    <%= check_box_tag :"genre[]", genre %>
+  </div>
+  <% end %>
 
-  <p>How are you doing today?</p>
-  <input type="radio" id="mood_happy" name="question_mood" value="Happy">
-  <label for="mood_happy">🤩</label><br>
-  <input type="radio" id="mood_neutral" name="question_mood" value="Neutral">
-  <label for="mood_neutral">🙂</label><br>
-  <input type="radio" id="mood_sad" name="question_mood" value="Sad">
-  <label for="mood_sad">😭</label>
-  <br>
+  <h2>Decade of the movie</h2>
+  <%# <input type="checkbox" name="question_genre1" value="Action">
+  <label for="question_genre1">Year</label><br> %>
+  <%= select_tag :year, options_for_select(@years_for_select) %>
 
-  <input type="submit" value="Roll" class="big-button">
 
-</form>
+
+  <h2>How was your day?</h2>
+  <div>
+    <%= label_tag "🤩" %>
+    <%= radio_button_tag :mood, "happy" %>
+  </div>
+  <div>
+    <%= label_tag "🙂" %>
+    <%= radio_button_tag :mood, "neutral" %>
+  </div>
+  <div>
+    <%= label_tag "😭" %>
+    <%= radio_button_tag :mood, "sad" %>
+  </div>
+
+<%= submit_tag "Roll", class: "big-button" %>
+  <%# <input type="submit" value="Roll" class="big-button"> %>
+
+<%# </form> %>
+<% end %>
