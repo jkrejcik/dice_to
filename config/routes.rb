@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   patch "history/:id", to: "results#update"
 
   # Routes for movie category
-  get "movie-questions", to: "movie_results#question"
+  get "movie-questions", to: "movie_results#question", as: :movie_questions
   post "movie-questions", to: "movie_results#create_suggestion"
   get "suggestion", to: "movie_results#show", as: :suggestion
   get "movie-accept", to: "movie_results#create"
