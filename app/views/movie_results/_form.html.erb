@@ -1,23 +1,31 @@
+<%= form_with url: movie_results_path, method: :post do |f|%>
+ <h2>What genre of films do you like?</h2>
+  <% @movie_genres.each do |genre| %>
+  <div>
+    <%= label_tag genre %>
+    <%= check_box_tag :"genre[]", genre %>
+  </div>
+  <% end %>
 
-<form action="/movie-questions" method="post">
-  <label for="question_text">Example of text input:</label><br>
-  <input type="text" id="question_text" name="question_text"><br>
+  <h2>Decade of the movie</h2>
+  <%# <input type="checkbox" name="question_genre1" value="Action">
+  <label for="question_genre1">Year</label><br> %>
+  <%= select_tag :year, options_for_select(@years_for_select) %>
 
-  <p>What genre of films do you like?</p>
-  <input type="checkbox" name="question_genre1" value="Action">
-  <label for="question_genre1">Action</label><br>
-  <input type="checkbox" name="question_genre2" value="Comedy">
-  <label for="question_genre2">Comedy</label>
+  <h2>How was your day?</h2>
+  <div>
+    <%= label_tag "🤩" %>
+    <%= radio_button_tag :mood, "happy" %>
+  </div>
+  <div>
+    <%= label_tag "🙂" %>
+    <%= radio_button_tag :mood, "neutral" %>
+  </div>
+  <div>
+    <%= label_tag "😭" %>
+    <%= radio_button_tag :mood, "sad" %>
+  </div>
 
-  <p>How are you doing today?</p>
-  <input type="radio" id="mood_happy" name="question_mood" value="Happy">
-  <label for="mood_happy">🤩</label><br>
-  <input type="radio" id="mood_neutral" name="question_mood" value="Neutral">
-  <label for="mood_neutral">🙂</label><br>
-  <input type="radio" id="mood_sad" name="question_mood" value="Sad">
-  <label for="mood_sad">😭</label>
-  <br>
   <%= hidden_field_tag :time_taken, :time %>
   <input type="submit" value="Roll" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
-
-</form>
+<% end %>
