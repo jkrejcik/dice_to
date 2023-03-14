@@ -26,6 +26,7 @@ class MovieResultsController < ApplicationController
 
     # As @movie_suggestion was array (.sample) picks random object Movie
     @result.movie = @movie_suggestion.sample
+    @result.rating = rand(1..5)
 
     # If succesfully saved ("Action" checkbox has to be clicked) user is redirected to /suggestion page (internaly show.html.erb)
     if @result.save
