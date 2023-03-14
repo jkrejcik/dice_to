@@ -5,3 +5,4 @@ class CustomResult < ApplicationRecord
 
   validates :question, presence: true
 end
+

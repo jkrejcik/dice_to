@@ -1,0 +1,12 @@
+<div class="nested-form-wrapper" data-new-record="f.object.new_record?">
+  <div class="d-flex justify-content-between" data-nested-form-target="new_record">
+    <div class="flex-grow-1">
+      <%= f.text_field :input, autofocus: true, class: "form-field", placeholder: 'Enter an option here...' %>
+    </div>
+    <div class="ms-3">
+        <button type="button" data-action="nested-form#add" class="plus-button" data-nested-form-target="plus"></button>
+        <button type="button" data-action="nested-form#remove" class="minus-button d-none" data-nested-form-target="minus"></button>
+    </div> 
+  </div>
+  <%= f.hidden_field :_destroy %>
+</div>

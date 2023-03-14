@@ -12,3 +12,4 @@ application.register("nested-form", NestedFormController)
 
 import TimeSavedController from "./time_saved_controller"
 application.register("time-saved", TimeSavedController)
+

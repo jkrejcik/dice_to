@@ -32,6 +32,8 @@ class MovieResultsController < ApplicationController
     @result.movie = @movie_suggestion.sample
     @result.time_taken = params[:time_taken]
     
+    @result.rating = rand(1..5)
+
     # If succesfully saved ("Action" checkbox has to be clicked) user is redirected to /suggestion page (internaly show.html.erb)
     if @result.save
       redirect_to suggestion_path

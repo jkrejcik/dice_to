@@ -4,6 +4,7 @@ export default class extends Controller {
   
   connect() {
     this.formTarget.onkeypress = function(e) {
+
       let key = e.charCode || e.keyCode || 0;     
       if (key == 13) {
         e.preventDefault();
