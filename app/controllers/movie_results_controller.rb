@@ -1,4 +1,8 @@
 class MovieResultsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create_suggestion
+  before_action :movie_result_params, only: :create_suggestion
+
+
   def question
   end
 
@@ -26,7 +30,6 @@ class MovieResultsController < ApplicationController
 
     # As @movie_suggestion was array (.sample) picks random object Movie
     @result.movie = @movie_suggestion.sample
-
     # If succesfully saved ("Action" checkbox has to be clicked) user is redirected to /suggestion page (internaly show.html.erb)
     if @result.save
       redirect_to suggestion_path
@@ -41,5 +44,11 @@ class MovieResultsController < ApplicationController
   end
 
   def create
+  end
+
+  private
+
+  def movie_result_params
+    params.require(:movie_result).permit(:time_saved)
   end
 end

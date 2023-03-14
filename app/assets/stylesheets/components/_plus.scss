@@ -20,5 +20,5 @@
     calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
+  transform: scale(1.05);
 }
-
