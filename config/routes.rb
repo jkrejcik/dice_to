@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # Routes for movie category
   get "movie-questions", to: "movie_results#question"
   post "movie-questions", to: "movie_results#create_suggestion"
-  get "suggestion", to: "movie_results#show"
+  get "suggestion", to: "movie_results#show", as: :suggestion
   get "movie-accept", to: "movie_results#create"
 
   # Routes for custom process
