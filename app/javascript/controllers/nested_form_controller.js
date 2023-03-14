@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
-  static targets = ["form", "line", "sign", "all"]
+  static targets = ["form", "line", "sign"]
   
   connect() {
-    this.allTarget.onkeypress = function(e) {
+    this.formTarget.onkeypress = function(e) {
       let key = e.charCode || e.keyCode || 0;     
       if (key == 13) {
         e.preventDefault();

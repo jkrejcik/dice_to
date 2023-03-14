@@ -1,6 +1,6 @@
 <div class="mt-5">
   <%= form_for @custom_result, url: custom_results_path, method: :post do |f| %>
-    <div data-controller="nested-form" data-nested-form-target="all">
+    <div data-controller="nested-form">
       <%= f.text_field :question, required: true, autofocus: true, class: "form-field mb-5", placeholder: 'Enter question - What to eat?', oninvalid: "this.setCustomValidity('Please enter a valid question')", oninput: "setCustomValidity('')" %>
         <div data-nested-form-target="form">
           <%= f.fields_for :options, Option.new, child_index: 1 do |option_subform| %>
