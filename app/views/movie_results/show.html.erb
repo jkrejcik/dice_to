@@ -1,5 +1,10 @@
-<h1>Final Result - page 4 in Figma </h1>
-
-<%= @movie_result.movie.title %>
-<p><%= @movie_result.movie.overview %></p>
-<%= link_to "Back to roll", movie_results_path %>
+<div class="container mt-5" data-controller="time-saved">
+    <h1>Final Result - page 4 in Figma </h1>
+    <%= @movie_result.movie.title %>
+    <p><%= @movie_result.movie.overview %></p>
+    <h5 class="d-none">Based on overthinkers everywhere, you saved <strong class="time"><%= @movie_result.time_taken %></strong> on this decision!</h5>
+    <div class="d-flex justify-content-between">
+        <input type="submit" value="Accept" class="btn btn-primary" data-time-saved-target="accept" data-action="click->time-saved#final">
+        <%= link_to "Back to roll", movie_questions_path, class: "btn btn-secondary" %>
+    </div>
+</div>

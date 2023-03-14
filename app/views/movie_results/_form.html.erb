@@ -1,14 +1,5 @@
-<%# <form action="/movie-questions" method="post"> %>
 <%= form_with url: movie_results_path, method: :post do |f|%>
  <h2>What genre of films do you like?</h2>
-  <%# <input type="checkbox" name="question_genre1" value="Action">
-  <label for="question_genre1">Action</label><br>
-  <input type="checkbox" name="question_genre2" value="Comedy">
-  <label for="question_genre2">Comedy</label><br>
-  <input type="checkbox" name="question_genre3" value="Drama">
-  <label for="question_genre3">Drama</label><br>
-  <input type="checkbox" name="question_genre4" value="Horror">
-  <label for="question_genre4">Horror</label> %>
   <% @movie_genres.each do |genre| %>
   <div>
     <%= label_tag genre %>
@@ -20,8 +11,6 @@
   <%# <input type="checkbox" name="question_genre1" value="Action">
   <label for="question_genre1">Year</label><br> %>
   <%= select_tag :year, options_for_select(@years_for_select) %>
-
-
 
   <h2>How was your day?</h2>
   <div>
@@ -37,8 +26,6 @@
     <%= radio_button_tag :mood, "sad" %>
   </div>
 
-<%= submit_tag "Roll", class: "big-button" %>
-  <%# <input type="submit" value="Roll" class="big-button"> %>
-
-<%# </form> %>
+  <%= hidden_field_tag :time_taken, :time %>
+  <input type="submit" value="Roll" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
 <% end %>

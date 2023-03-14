@@ -1,4 +1,8 @@
 class MovieResultsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create_suggestion
+  # before_action :movie_result_params, only: :create_suggestion
+
+
   def question
   end
 
@@ -23,11 +27,14 @@ class MovieResultsController < ApplicationController
 
     # As @movie_suggestion was array (.sample) picks random object Movie
     @result.movie = @movie_suggestion.sample
+    @result.time_taken = params[:time_taken]
+    
     @result.rating = rand(1..5)
 
     # If succesfully saved ("Action" checkbox has to be clicked) user is redirected to /suggestion page (internaly show.html.erb)
     if @result.save
       redirect_to suggestion_path
+      
     else
       render "question"
     end
@@ -41,6 +48,7 @@ class MovieResultsController < ApplicationController
   def index
     @movie_genres = Movie.pluck(:genre).uniq.sample(12)
     @years_for_select = [["70s",1970],["80s",1980],["90s",1990],["2000s",2000], ["2010s",2010], ["2020s",2020]]
+    @movie_result = MovieResult.where(user: current_user).last
   end
 
   def create
@@ -62,4 +70,10 @@ class MovieResultsController < ApplicationController
     movie_result = MovieResult.create(movie_id: result.id, user_id: current_user.id)
     redirect_to movie_result_path(movie_result)
   end
+
+  # private
+
+  # # def movie_result_params
+  # #   params.require(:movie_result).permit(:time_taken, :question_mood, :question_text, :question_genre2)
+  # # end
 end
