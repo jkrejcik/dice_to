@@ -1,3 +1,4 @@
+
 <form action="/movie-questions" method="post">
   <label for="question_text">Example of text input:</label><br>
   <input type="text" id="question_text" name="question_text"><br>
@@ -16,7 +17,7 @@
   <input type="radio" id="mood_sad" name="question_mood" value="Sad">
   <label for="mood_sad">😭</label>
   <br>
-
-  <input type="button" value="Roll" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
+  <%= hidden_field_tag :time_taken, :time %>
+  <input type="submit" value="Roll" class="big-button" data-time-taken-target="roll" data-action="click->time-taken#time">
 
 </form>
