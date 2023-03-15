@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   patch "history/:id", to: "results#update"
 
   # Routes for movie category
-  get "movie-questions", to: "movie_results#question"
+  get "movie-questions", to: "movie_results#question", as: :movie_questions
   post "movie-questions", to: "movie_results#create_suggestion"
-  get "suggestion", to: "movie_results#show"
+  get "suggestion", to: "movie_results#show", as: :suggestion
   get "movie-accept", to: "movie_results#create"
 
   # Routes for custom process
@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   post "custom", to: "custom_results#create"
   get "custom/:id", to: "custom_results#show", as: :custom_result
 
-  resources :movie_results, only: %i[create index show]
+  # resources :movie_results, only: %i[create index show]
 end
