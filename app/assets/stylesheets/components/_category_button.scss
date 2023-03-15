@@ -1,0 +1,18 @@
+.category-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 48px;
+    width: 250px;
+    height: 250px;
+    // border: 0px !important;
+}
+
+.category-button:hover {
+    color: lightslategray; 
+    background-color: lightgrey; 
+}
