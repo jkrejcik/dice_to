@@ -1,31 +1,39 @@
-<%= form_with url: movie_questions_path, method: :post do |f|%>
- <h2>What genre of films do you like?</h2>
-  <% @movie_genres.each do |genre| %>
-  <div>
-    <%= label_tag genre %>
-    <%= check_box_tag :"genre[]", genre %>
-  </div>
+<div class="container-fluid" data-controller="question">
+
+  <%= form_for @movie_result, url: movie_questions_path, method: :post do |f| %>
+  
+    <div class="tab d-none">
+      <%= render "colour_form"  %>
+    </div>
+
+    <div class="tab d-none">
+      <%= render "mood_form" %>
+    </div>
+
+    <div class="tab d-none">
+      <%= render "decade_form" %>
+    </div>
+
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <%# <button type="button" id="prevBtn">Previous</button> %>
+        <button type="button" id="nextBtn" data-question-target="next" data-action="click->question#next" >Next</button>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <span span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+
+    <div class="d-flex mt-5 justify-content-center">
+      <%= hidden_field_tag :time_taken, :time %>
+      <div>
+        <input type="submit" value="ROLL" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
+      </div>
+    </div>
+
   <% end %>
-
-  <h2>Decade of the movie</h2>
-  <%# <input type="checkbox" name="question_genre1" value="Action">
-  <label for="question_genre1">Year</label><br> %>
-  <%= select_tag :year, options_for_select(@years_for_select) %>
-
-  <h2>How was your day?</h2>
-  <div>
-    <%= label_tag "🤩" %>
-    <%= radio_button_tag :mood, "happy" %>
-  </div>
-  <div>
-    <%= label_tag "🙂" %>
-    <%= radio_button_tag :mood, "neutral" %>
-  </div>
-  <div>
-    <%= label_tag "😭" %>
-    <%= radio_button_tag :mood, "sad" %>
-  </div>
-
-  <%= hidden_field_tag :time_taken, :time %>
-  <input type="submit" value="Roll" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
-<% end %>
+</div>

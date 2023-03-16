@@ -4,12 +4,17 @@
 
 import { application } from "./application"
 
+import CarouselController from "./carousel_controller"
+application.register("carousel", CarouselController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import NestedFormController from "./nested_form_controller"
 application.register("nested-form", NestedFormController)
 
+import QuestionController from "./question_controller"
+application.register("question", QuestionController)
+
 import TimeSavedController from "./time_saved_controller"
 application.register("time-saved", TimeSavedController)
-
