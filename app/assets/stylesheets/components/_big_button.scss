@@ -3,17 +3,23 @@
     justify-content: center;
     align-items: center;
     background-color: grey;
-    color: white;
+    color: black;
     font-weight: 800;
-    font-size: 24px;
+    font-family: 'Monument Extended Ultrabold';
+    font-size: 32px;
+    font-style: italic;
+    letter-spacing: 1px;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border: 0px !important;
 }
 
 .big-button:hover {
-    color: lightslategray; 
-    background-color: lightgrey; 
+    color: white; 
+    background-color: #5C78FF;
+    filter: brightness(110%);
+    transform: scale(1.05);
+    border: 5px solid white !important;
 }
 

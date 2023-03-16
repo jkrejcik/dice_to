@@ -1,0 +1,20 @@
+.colour-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: black;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 40px;
+    width: 250px;
+    height: 250px;
+}
+
+.colour-button:hover {
+    color: white; 
+    filter: brightness(110%);
+    transform: scale(1.05);
+    border: 5px solid white;
+}
+       

@@ -2,10 +2,10 @@
   --b: 9px; /* the thickness */
   width: 36px; /* the size */
   aspect-ratio: 1;
-  border: 0px solid lightcoral; /* the outer space */
+  border: 0px solid #01C97B; /* the outer space */
   background:
-    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg,lightcoral 0) 
-    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg,#01C97B 0) 
+    calc(101% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
 }
@@ -14,9 +14,9 @@
   --b: 9px; /* the thickness */
   width: 36px; /* the size */
   aspect-ratio: 1;
-  border: 0px solid coral; /* the outer space */
+  border: 0px solid #01C97B; /* the outer space */
   background:
-    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg, coral 0) 
+    conic-gradient(from 90deg at var(--b) var(--b),#ffffff00 90deg, #01C97B 0) 
     calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
