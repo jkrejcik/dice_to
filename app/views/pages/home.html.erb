@@ -1,7 +1,17 @@
-<div class="container mt-5">
-  <h1 class="text-align-start">Welcome to DiceTo</h1>
-  <p>
-    Don't waste anymore time! Roll with DiceTo...
-  </p>
-  <%= link_to "Get Started", categories_path, class: "btn btn-primary text-center mt-3" %>
+<div class="home-page">
+  <h1 class="h1-big">Dice</h1>
+  <h1>To</h1>
+
+  <div class="d-flex align-items-center mb-2 mt-5">
+      <i class="fa-solid fa-square-xmark"></i><span class="mx-2">Don't waste time!</span>
+  </div>
+  <div class="d-flex align-items-center mb-2">
+      <i class="fa-solid fa-square-check"></i><span class="mx-2">Decide faster!</span>
+  </div>
+  <div class="d-flex align-items-center mb-5">
+      <i class="fa-solid fa-square-check"></i><span class="mx-2">Have fun!</span>
+  </div>
+
+  <%= link_to "Get Started", categories_path, class: "get-started-btn" %>
+
 </div>
