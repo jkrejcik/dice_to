@@ -9,27 +9,27 @@ class MovieResultsController < ApplicationController
   end
 
   def create_suggestion
-    genre = @colour_genre_key[params[:colour].to_sym]
-    movie_candidates = Movie.where(genre: genre)
+    result = Movie.all.sample
+    genre = @colour_genre_key[params[:colour].to_sym] if params[:colour]
+    genre ? genre_candidates = Movie.where(genre: genre) : genre_candidates = []
 
-    year = params[:year].to_i..(params[:year].to_i + 10)
-    movie_candidates = movie_candidates.where(year: year)
+    year = params[:year].to_i..(params[:year].to_i + 10) if params[:year]
+    year ? year_candidates = Movie.where(year: year) : year_candidates = []
 
-    mood = params[:mood]
-    sql = @happy_words.map { "overview ilike ?" }.join(" or ")
-    movie_candidates = movie_candidates.where(sql, *@happy_words) if mood == "happy"
+    mood = params[:mood] if params[:mood]
+    mood_candidates = Movie.where(@sqlhappy, *@happy_words) if mood == "happy"
+    mood_candidates = Movie.where(@sqlsad, *@sad_words) if mood == "sad"
+    mood_candidates = [] if mood == "neutral"
+    mood_candidates = [] if mood == "bad"
+    mood_candidates = [] unless mood
 
-    sql = @sad_words.map { "overview ilike ?" }.join(" or ")
-    movie_candidates = movie_candidates.where(sql, *@sad_words) if mood == "sad"
+    result = (genre_candidates + mood_candidates + year_candidates).sample if (genre_candidates + mood_candidates + year_candidates).count.positive?
 
-    result = movie_candidates.sample
     redirect_to(movie_questions_path) and return if result.blank?
 
-    if MovieResult.new(movie_id: result.id, user: current_user, time_taken: params[:time_taken])
-      raise
+    if MovieResult.create(movie_id: result.id, user: current_user, time_taken: params[:time_taken])
       redirect_to suggestion_path
     else
-      
       render "question"
     end
   end
@@ -47,10 +47,12 @@ class MovieResultsController < ApplicationController
 
   def set_options
     @movie_genres = Movie.pluck(:genre).uniq.sample(12)
-    @years_for_select = [["70s", 1970], ["80s", 1980], ["90s", 1990], ["2000s", 2000], ["2010s", 2010], ["2020s", 2020]]
+    @years_for_select = [["60s", 1960], ["70s", 1970], ["80s", 1980], ["90s", 1990], ["2000s", 2000], ["2010s", 2010], ["2020s", 2020]]
     @sad_words = ["%anger%", "%sad%", "%kill%", "%death%", "%fail%", "%cry%"]
     @happy_words = ["%happy%", "%success%", "%joy%", "%dog%", "%family%", "%love%"]
     @colours = ["blue", "green", "yellow", "red", "pink", "orange", "brown", "purple"]
+    @sqlhappy = @happy_words.map { "overview ilike ?" }.join(" or ")
+    @sqlsad = @sad_words.map { "overview ilike ?" }.join(" or ")
   end
 
   def colour

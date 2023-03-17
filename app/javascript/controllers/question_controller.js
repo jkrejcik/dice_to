@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="question"
 export default class extends Controller {
-  static targets = "next"
+  static targets = ["next", "emoji"]
 
   connect() {
     this.forms = document.getElementsByClassName("tab")
@@ -25,5 +25,20 @@ export default class extends Controller {
       forms[randomTabIndex].classList.remove("d-none")
       forms[randomTabIndex].classList.add("show")
     }
+  }
+
+  select(event) {
+    // identify with htmlFor
+    console.log(event.target.htmlFor)
+    let emojis = this.emojiTargets
+    console.log(emojis)
+    emojis.forEach((element, index) => {
+      if (element.htmlFor = event.target.htmlFor) {
+          emojis.splice((index + 1), index)
+      }
+      // else {
+      //   element.attributes[1] = filter: saturate(50%);
+      // }
+    })
   }
 }
