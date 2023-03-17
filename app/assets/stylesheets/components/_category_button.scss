@@ -1,18 +1,35 @@
-.category-button {
+.category-button-eat, .category-button-watch, .category-button-wear, .category-button-custom {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     background-color: grey;
-    color: white;
-    border-radius: 10px;
+    color: black;
+    border-radius: 24px;
     font-weight: 500;
     font-size: 40px;
     width: 250px;
     height: 250px;
     // border: 0px !important;
+    background-size: contain;
 }
 
-.category-button:hover {
-    color: lightslategray;
-    background-color: lightgrey;
+.category-button-eat {
+    background-image: url(eat.png);
+}
+
+.category-button-watch {
+    background-image: url(watch.png);
+}
+
+.category-button-wear {
+    background-image: url(wear.png);
+}
+
+.category-button-custom {
+    background-image: url(custom.png);
+}
+
+.category-button-eat:hover, .category-button-watch:hover, .category-button-wear:hover, .category-button-custom:hover {
+    color: white;
+    border: 8px solid white;
 }

@@ -27,18 +27,18 @@ export default class extends Controller {
     }
   }
 
-  select(event) {
-    // identify with htmlFor
-    console.log(event.target.htmlFor)
-    let emojis = this.emojiTargets
-    console.log(emojis)
-    emojis.forEach((element, index) => {
-      if (element.htmlFor = event.target.htmlFor) {
-          emojis.splice((index + 1), index)
-      }
-      // else {
-      //   element.attributes[1] = filter: saturate(50%);
-      // }
-    })
-  }
+  // select(event) {
+  //   // identify with htmlFor
+  //   console.log(event.target.htmlFor)
+  //   let emojis = this.emojiTargets
+  //   console.log(emojis)
+  //   emojis.forEach((element, index) => {
+  //     if (element.htmlFor = event.target.htmlFor) {
+  //         emojis.splice((index + 1), index)
+  //     }
+  //     // else {
+  //     //   element.attributes[1] = filter: saturate(50%);
+  //     // }
+  //   })
+  // }
 }
