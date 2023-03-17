@@ -1,16 +1,28 @@
-<h2>How was your day?</h2>
-
-<div>
-  <%= label_tag "🤩" %>
-  <%= radio_button_tag :mood, "happy" %>
+<div class="d-flex justify-content-center">
+  <h2>How are you feeling today?</h2>
 </div>
 
-<div>
-<%= label_tag "😐" %>
-<%= radio_button_tag :mood, "neutral" %>
-</div>
+<div class="">
+  <div class="d-flex flex-wrap justify-content-center">
+    <div class="checkbox-div">
+      <%# <p>On top of the *!$&ing world!</p> %>
+      <%= radio_button_tag :mood, "happy", false, class: "checkbox-emoji" %>
+      <label for="mood_happy" style="" data-question-target="emoji" data-action="click->question#select">🤩</label>
+    </div>
 
-<div>
-<%= label_tag "😭" %>
-<%= radio_button_tag :mood, "sad" %>
+    <div class="checkbox-div">
+      <%= radio_button_tag :mood, "neutral", false, class: "checkbox-emoji" %>
+      <label for="mood_neutral" style="" data-question-target="emoji" data-action="click->question#select">😐</label>
+    </div>
+
+    <div class="checkbox-div">
+      <%= radio_button_tag :mood, "sad", false, class: "checkbox-emoji" %>
+      <label for="mood_sad" style="" data-question-target="emoji" data-action="click->question#select">😭</label>
+    </div>
+
+    <div class="checkbox-div">
+      <%= radio_button_tag :mood, "bad", false, class: "checkbox-emoji" %>
+      <label for="mood_bad" style="" data-question-target="emoji" data-action="click->question#select">🥴</label>
+    </div>
+  </div>
 </div>
