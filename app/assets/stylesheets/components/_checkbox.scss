@@ -1,12 +1,37 @@
-.checkbox {
-    display:inline-block;
-    opacity:0;
+.checkbox-div {
+    position: relative;
 }
 
-.checkbox::selection {
-//   border: white;
+.checkbox-element {
+    position: absolute;
+    transform: scale(0);
 }
 
-// label:hover {
-//     color: black;
-// }
+.checkbox-element + label {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    color: black;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 40px;
+    width: 250px;
+    height: 250px;
+    margin: 7px;
+}
+
+.checkbox-element:checked + label {
+    color: white; 
+    filter: brightness(110%);
+    transform: scale(1.05);
+    border: 5px solid white;
+  }
+
+  .checkbox-element:hover + label {
+    color: white; 
+    filter: brightness(110%);
+    transform: scale(1.05);
+    border: 5px solid white;
+}

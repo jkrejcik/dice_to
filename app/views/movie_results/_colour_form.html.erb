@@ -2,13 +2,12 @@
   <h2>What's your favourite colour?</h2>
 </div>
 <div class="">
-      <% @colour_hash_key.each do |colour| %>
-        <div class="colour-button m-2" style="background-color:<%=colour[1]%>;">
-          <%# <%= f.i "#{colour[0]}", name: "colour"%>
-          <label for=<%="#{colour[0]}"%>><%="#{colour[0]}"%></label>
-          <input id=<%="#{colour[0]}"%> name="" type="checkbox" value="" class="checkbox" />
-          
-          <%# <%= check_box_tag("#{colour[0]}"), name: "colour" %>
+    <div class="d-flex flex-wrap justify-content-center">
+      <% @colour_hash_key.values.shuffle.each do |colour| %>
+       <div class="checkbox-div">
+          <%= radio_button_tag "colour", @colour_hash_key.key(colour), false, class: "checkbox-element" %>
+          <label for="colour_<%=@colour_hash_key.key(colour)%>" style="background-color:<%=colour%>;"><%=@colour_hash_key.key(colour)%></label>
         </div>
       <% end %>
+    </div>
 </div>

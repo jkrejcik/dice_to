@@ -11,7 +11,6 @@ class MovieResultsController < ApplicationController
   def create_suggestion
     genre = @colour_genre_key[params[:colour].to_sym]
     movie_candidates = Movie.where(genre: genre)
-    raise
 
     year = params[:year].to_i..(params[:year].to_i + 10)
     movie_candidates = movie_candidates.where(year: year)
