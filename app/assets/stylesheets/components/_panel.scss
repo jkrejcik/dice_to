@@ -4,3 +4,32 @@
   border-radius: 5px;
   padding: 30px;
 }
+
+.panel h1 {
+  font-style: italic;
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.panel .time {
+  font-size: 24px;
+  background-color: black;
+  color: #5C78FF;
+  border: 8px solid white;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 60px;
+  text-align: center;
+}
+
+.panel .answer {
+  font-size: 40px;
+  background-color: black;
+  color: #5C78FF;
+  font-weight: 800;
+  border: 8px solid white;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 60px;
+  text-align: center;
+}
