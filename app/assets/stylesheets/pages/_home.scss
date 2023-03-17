@@ -1,8 +1,26 @@
 // Specific CSS for your home-page
-h1 {
-    font-size: 80px;
-}
-
-p {
-    font-size: 24px;
+.home-page {
+  padding: 50px;
+  h1 {
+    font-size: 100px;
+  }
+  .h1-big {
+    margin-bottom: 0;
+    margin-top: 50px;
+  }
+  p, i {
+    font-size: 20px;
+  }
+  .fa-square-xmark {
+    color: #FF653E;
+  }
+  .fa-square-check {
+    color: #02C97B;
+  }
+  .get-started-btn{
+    background-color: #FC7A57;
+    border-radius: 5px;
+    padding: 10px;
+    color: black;
+  }
 }
