@@ -1,8 +1,3 @@
-.checkbox-emoji {
-    position: absolute;
-    transform: scale(0);
-}
-
 .checkbox-emoji + label {
     cursor: pointer;
     display: inline-flex;
@@ -15,19 +10,26 @@
     width: 250px;
     height: 250px;
     margin: 30px;
-    // filter: blur(1px);
 }
 
 .checkbox-emoji:checked + label {
     color: white; 
     filter: brightness(90%);
-    transform: scale(1.1);
-    // border: 5px solid white;
-  }
+    transform: scale(1.2);
+}
 
 .checkbox-emoji:hover + label {
     color: white; 
     filter: brightness(90%);
-    transform: scale(1.1);
-    // border: 5px solid white;
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 480px) {
+    .checkbox-emoji + label {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        font-size: 60px;
+        margin: 40px;
+    }
 }

@@ -1,16 +1,47 @@
 .accept-btn {
-    background-color: #01C97B;
-    border-radius: 8px;
-    border: 4px solid white;
-    padding: 15px;
     color: black;
+    font-size: 32px;
+    font-family: 'Monument Extended Ultrabold';
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 4px;
+    cursor: pointer;
+    text-shadow: 3px 2px 1px white;
+    transition: 0.1s;
 }
 
 .accept-btn:hover {
-    background-color: #01C97B;
-    border-radius: 8px;
-    border: 4px solid white;
-    padding: 15px;
-    transform: scale(1.05);
+    transform: scale(1.02);
+    color: #01C97B;
+    text-shadow: 3px 2px 1px black;
+}
+
+.back-to-roll-btn {
     color: white;
+    font-size: 32px;
+    font-family: 'Monument Extended Ultrabold';
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 4px;
+    cursor: pointer;
+    text-shadow: 3px 2px 1px black;
+    transition: 0.1s;
+}
+
+.back-to-roll-btn:hover {
+    transform: scale(1.02);
+    color: #FF653E;
+    text-shadow: 3px 2px 1px black;
+}
+
+@media screen and (max-width: 480px) {
+    .back-to-roll-btn {
+        font-size: 28px;
+    }
+
+    .accept-btn {
+        font-size: 28px;
+    }
 }

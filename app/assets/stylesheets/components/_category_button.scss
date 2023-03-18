@@ -1,4 +1,5 @@
-.category-button-eat, .category-button-watch, .category-button-wear, .category-button-custom {
+.category-button-eat, .category-button-watch,
+.category-button-wear, .category-button-custom {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +30,8 @@
     background-image: url(custom.png);
 }
 
-.category-button-eat:hover, .category-button-watch:hover, .category-button-wear:hover, .category-button-custom:hover {
+.category-button-eat:hover, .category-button-watch:hover, 
+.category-button-wear:hover, .category-button-custom:hover {
     color: white;
     border: 8px solid white;
 }

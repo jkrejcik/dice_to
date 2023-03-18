@@ -1,4 +1,5 @@
-.colour-button {
+.colour-btn + label {
+    cursor: pointer;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -9,12 +10,29 @@
     font-size: 40px;
     width: 250px;
     height: 250px;
+    margin: 7px;
 }
 
-.colour-button:hover {
+:checked + label {
     color: white; 
-    filter: brightness(110%);
+    filter: brightness(90%);
     transform: scale(1.05);
     border: 5px solid white;
 }
-       
+
+.colour-btn:hover + label {
+    color: white; 
+    filter: brightness(90%);
+    transform: scale(1.05);
+    border: 5px solid white;
+}
+
+@media screen and (max-width: 480px) {
+    .colour-btn + label {
+        width: 140px;
+        height: 140px;
+        font-size: 24px;
+        padding: 20px;
+        margin: 5px;
+    }
+}
