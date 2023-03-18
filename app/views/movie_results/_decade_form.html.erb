@@ -1,16 +1,9 @@
-<%# <h2>Decade of the movie</h2>
-<%= select_tag :year, options_for_select(@years_for_select) %>
-
-<div class="d-flex justify-content-center">
-  <h2>What were the best years to be alive?</h2>
-</div>
-
 <div class="">
     <div class="d-flex flex-wrap justify-content-center">
       <% @years_for_select.each do |decade| %>
        <div class="checkbox-div">
-          <%= radio_button_tag "decade", decade[0], false, class: "checkbox-element" %>
-          <label for="decade_<%=decade[0]%>" style="background-color:#89608E;"><%=decade[0]%></label>
+          <%= radio_button_tag "decade", decade[0], false, class: "checkbox-element-decade" %>
+          <label for="decade_<%=decade[0]%>"><%=decade[0]%></label>
         </div>
       <% end %>
     </div>
