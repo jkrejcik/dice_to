@@ -13,7 +13,7 @@
     margin: 7px;
 }
 
-:checked + label {
+.colour-btn:checked + label {
     color: white; 
     filter: brightness(90%);
     transform: scale(1.05);

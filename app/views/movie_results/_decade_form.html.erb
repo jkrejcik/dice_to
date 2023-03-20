@@ -3,7 +3,7 @@
       <% @years_for_select.each do |decade| %>
        <div class="checkbox-div">
           <%= radio_button_tag "decade", decade[0], false, class: "checkbox-element-decade" %>
-          <label for="decade_<%=decade[0]%>"><%=decade[0]%></label>
+          <label for="decade_<%=decade[0]%>" data-action="click->question#select"><%=decade[0]%></label>
         </div>
       <% end %>
     </div>

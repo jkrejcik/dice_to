@@ -3,7 +3,7 @@
       <% @colour_hash_key.values.shuffle.each do |colour| %>
        <div class="checkbox-div">
           <%= radio_button_tag "colour", @colour_hash_key.key(colour), false, class: "colour-btn" %>
-          <label for="colour_<%=@colour_hash_key.key(colour)%>" style="background-color:<%=colour%>;" data-question-target="colour" data-action="click->question#select"><%=@colour_hash_key.key(colour)%></label>
+          <label for="colour_<%=@colour_hash_key.key(colour)%>" style="background-color:<%=colour%>;" data-action="click->question#select"><%=@colour_hash_key.key(colour)%></label>
         </div>
       <% end %>
     </div>
