@@ -29,6 +29,10 @@
     color: black;
   }
 
+  .time-ago {
+    font-size: smaller;
+  }
+
   h2 {
     margin-top: 30px;
     font-size: 32px;
@@ -36,7 +40,7 @@
   }
   .cards {
     display: flex;
-    padding: 25px 0px;
+    padding: 10px 0px;
     list-style: none;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -51,11 +55,19 @@
     // box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
     scroll-snap-align: start;
     transition: all 0.2s;
-    height: 250px;
+    height: 270px;
 
     h3 {
     font-size: 40px;
     }
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  .custom-time {
+    margin-right: 16px;
+    margin-bottom: 10px;
   }
   .card-first-watch {
     background-image: url(watch.png);
