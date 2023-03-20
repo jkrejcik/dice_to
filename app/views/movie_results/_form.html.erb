@@ -2,7 +2,7 @@
 
   <%= form_for @movie_result, url: movie_questions_path, method: :post do |f| %>
 
-    <div class="tab d-none">
+    <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
         <h2 style="text-align: center;">What's your favourite colour?</h2>
       </div>
@@ -10,7 +10,7 @@
       <%= render "colour_form"  %>
     </div>
 
-    <div class="tab d-none">
+    <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
         <h2>How are you feeling today?</h2>
       </div>
@@ -18,7 +18,7 @@
       <%= render "mood_form" %>
     </div>
 
-    <div class="tab d-none">
+    <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
         <h2 style="text-align: center;">What decade do you identify most with?</h2>
       </div>
