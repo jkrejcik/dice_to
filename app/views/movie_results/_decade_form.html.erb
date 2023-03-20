@@ -2,8 +2,8 @@
     <div class="d-flex flex-wrap justify-content-center">
       <% @years_for_select.each do |decade| %>
        <div class="checkbox-div">
-          <%= radio_button_tag "decade", decade[0], false, class: "checkbox-element-decade" %>
-          <label for="decade_<%=decade[0]%>" data-action="click->question#select"><%=decade[0]%></label>
+          <%= radio_button_tag "decade", decade[1], false, class: "checkbox-element-decade" %>
+          <label for="decade_<%=decade[1]%>" data-action="click->question#select"><%=decade[0]%></label>
         </div>
       <% end %>
     </div>
