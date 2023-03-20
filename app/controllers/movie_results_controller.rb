@@ -1,5 +1,6 @@
 class MovieResultsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create_suggestion
+  before_action :set_movie, only: %i[show index]
   before_action :set_options, only: %i[question create_suggestion]
   before_action :colour, only: %i[create_suggestion question]
   # before_action :movie_result_params, only: :create_suggestion
@@ -11,18 +12,13 @@ class MovieResultsController < ApplicationController
   def create_suggestion
     result = Movie.all.sample
     genre = @colour_genre_key[params[:colour].to_sym] if params[:colour]
-    genre ? genre_candidates = Movie.where(genre: genre) : genre_candidates = []
+    genre ? genre_candidates = Movie.where(genre: genre) : []
 
-    year = params[:year].to_i..(params[:year].to_i + 10) if params[:year]
-    year ? year_candidates = Movie.where(year: year) : year_candidates = []
+    year = params[:decade].to_i..(params[:decade].to_i + 10) if params[:decade]
+    year ? year_candidates = Movie.where(year: year) : []
 
     mood = params[:mood] if params[:mood]
-    mood_candidates = Movie.where(@sqlhappy, *@happy_words) if mood == "happy"
-    mood_candidates = Movie.where(@sqlsad, *@sad_words) if mood == "sad"
-    mood_candidates = [] if mood == "neutral"
-    mood_candidates = [] if mood == "bad"
-    mood_candidates = [] unless mood
-
+    mood_candidates = set_mood(mood) if mood
     result = (genre_candidates + mood_candidates + year_candidates).sample if (genre_candidates + mood_candidates + year_candidates).count.positive?
 
     redirect_to(movie_questions_path) and return if result.blank?
@@ -35,15 +31,31 @@ class MovieResultsController < ApplicationController
   end
 
   def show
-    # Because we already saved in create_suggestion action result database we can use it here
-    @movie_result = MovieResult.where(user: current_user).last
   end
 
   def index
-    @movie_result = MovieResult.where(user: current_user).last
   end
 
   private
+
+  def set_movie
+    @movie_result = MovieResult.where(user: current_user).last
+  end
+
+  def set_mood(mood)
+    case mood
+    when "happy"
+      Movie.where(@sqlhappy, *@happy_words)
+    when "sad"
+      Movie.where(@sqlsad, *@sad_words)
+    when "neutral"
+      []
+    when "bad"
+      []
+    else
+      []
+    end
+  end
 
   def set_options
     @movie_genres = Movie.pluck(:genre).uniq.sample(12)
