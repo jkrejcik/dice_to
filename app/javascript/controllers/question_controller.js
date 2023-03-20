@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="question"
 export default class extends Controller {
-  static targets = ["next", "colour"]
+  static targets = ["next"]
 
   connect() {
     // something on connection is flashing before the following. 
@@ -10,6 +10,7 @@ export default class extends Controller {
     this.randomTabIndex = Math.floor(Math.random() * this.forms.length)
     this.forms[this.randomTabIndex].classList.remove("d-none")
     this.forms[this.randomTabIndex].classList.add("show")
+    this.reg = /[_^].+/
   }
 
   next(event) {
@@ -29,16 +30,16 @@ export default class extends Controller {
   }
 
   select(event) {
-    let colourID = event.target.parentElement.firstChild.nextSibling.id
-    console.log(colourID)
-    let allButtons = document.getElementsByClassName("colour-btn")
-    Array.from(allButtons).forEach((button) => {
-      if (button.id != colourID) {
+    let longID = event.target.parentElement.firstChild.nextSibling.id
+    let id = longID.replace(this.reg, "")
+    if (id == "colour") { this.allButtons = document.getElementsByClassName("colour-btn") }
+    if (id == "mood") { this.allButtons = document.getElementsByClassName("checkbox-emoji") }
+    if (id == "decade") { this.allButtons = document.getElementsByClassName("checkbox-element-decade") }
+    Array.from(this.allButtons).forEach((button) => {
+      if (button.id != longID) {
         button.parentElement.classList.add("d-none")
       }
     })
-    // document.getElementById("zoom").scrollIntoView();
-    // console.log(allButtons.querySelectorAll(`:not([id^='${selectedID}'])`))
   }
 
 
