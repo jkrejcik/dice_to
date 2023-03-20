@@ -10,7 +10,7 @@ class MovieResultsController < ApplicationController
   end
 
   def create_suggestion
-    @result = Movie.sample
+    @result = Movie.all.sample
     @result = set_result if params[:colour] || params[:mood] || params[:decade] || params[:weather]
 
     redirect_to(movie_questions_path) and return if @result.blank?
@@ -54,7 +54,7 @@ class MovieResultsController < ApplicationController
 
   def set_mood_candidates
     mood = params[:mood] if params[:mood]
-    mood ? mood(mood) : []
+    mood ? set_mood(mood) : []
   end
 
   def set_weather_candidates
