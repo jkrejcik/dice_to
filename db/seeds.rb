@@ -11,6 +11,9 @@ puts "Users deleted"
 Movie.destroy_all
 puts "Movies deleted"
 
+Restaurant.destroy_all
+puts "Restaurants deleted"
+
 puts "=== SEEDING TABLES ==="
 
 puts "=== CREATING 3 USERS ==="
@@ -84,5 +87,23 @@ for page in 1..20 do
     puts "#{new_movie.id} - #{new_movie.title}."
   end
 end
+
+puts "=== CREATING 1 Restaurant ==="
+
+new_restaurant = Restaurant.new
+new_restaurant.name = "Can Dende"
+new_restaurant.city = "Barcelona"
+new_restaurant.address = "C/ de la Ciutat de Granada, 44"
+new_restaurant.phone = "930 19 82 97"
+new_restaurant.cuisine = "brunch"
+new_restaurant.rating = rand(1..5)
+# Price can act $$$ signes showed like in google
+new_restaurant.price = rand(1..4)
+
+# Images random for now
+new_restaurant.image_1 = "https://source.unsplash.com/random?restaurant"
+new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
+new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
+new_restaurant.save
 
 puts "=== FINISHED IN #{(Time.now - start).round}s ==="
