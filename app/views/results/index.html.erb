@@ -37,8 +37,10 @@
     </li>
     <% @custom_results.each do |result| %>
       <li class="card">
-
-          <h3 class="card-title"><%= result.question %></h3>
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title"><%= result.question %></h3>
+            <%= link_to "x", custom_result_path(result), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
           <div class="mt-5 d-flex justify-content-center">
             <h3><%= result.answer %></h3>
           </div>
@@ -46,22 +48,23 @@
         <%# <div class="card-link-wrapper">
           <a href="" class="card-link">Details</a>
         </div> %>
-        <span class="time-ago position-absolute bottom-0 end-0 custom-time">
-          <% case (@today - result.created_at).round %>
-            <% when 0..60 %>
-              < 1 minute ago
-            <% when 61..3600 %>
-              <%= ((@today - result.created_at) / 60).round %> minutes ago
-            <% when 3601..7199 %>
-              1 hour ago
-            <% when 7200..86400 %>
-              <%= ((@today - result.created_at) / 3600).round %> hours ago
-             <% when 86401..172799 %>
-              yesterday
-            <% else %>
-            <%= ((@today - result.created_at) / 86400).round %> days ago
-          <% end %>
-        </span>
+
+          <span class="time-ago custom-time position-absolute bottom-0 end-0">
+            <% case (@today - result.created_at).round %>
+              <% when 0..60 %>
+                < 1 minute ago
+              <% when 61..3600 %>
+                <%= ((@today - result.created_at) / 60).round %> minutes ago
+              <% when 3601..7199 %>
+                1 hour ago
+              <% when 7200..86400 %>
+                <%= ((@today - result.created_at) / 3600).round %> hours ago
+              <% when 86401..172799 %>
+                yesterday
+              <% else %>
+              <%= ((@today - result.created_at) / 86400).round %> days ago
+            <% end %>
+          </span>
       </li>
     <% end %>
   </ul>

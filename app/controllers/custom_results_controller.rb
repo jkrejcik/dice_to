@@ -1,7 +1,7 @@
 class CustomResultsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create show]
   before_action :custom_result_params, only: :create
-  before_action :set_custom_result, only: :show
+  before_action :set_custom_result, only: %i[show destroy]
 
   def new
     @custom_result = CustomResult.new
@@ -21,6 +21,12 @@ class CustomResultsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @custom_result.destroy
+    # flash[:success] = "The custom result '#{@custom_result.question}' was deleted."
+    redirect_to history_path, status: :see_other
   end
 
   private
