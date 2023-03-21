@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   # Routes for restaurant category (EAT)
   get "restaurant-questions", to: "restaurant_results#question", as: :restaurant_questions
   post "restaurant-questions", to: "restaurant_results#create_suggestion"
-  get "suggestion", to: "restaurant_results#show", as: :suggestion
+  get "suggestion", to: "restaurant_results#show", as: :restaurant_suggestion # can not be name only suggestion as it has to be unique route name
   # Did not create "restaurant-accept" route as it was not used in movies (we saved result already in create_suggestion)
 end
