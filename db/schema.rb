@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_141555) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_192217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_141555) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "restaurant_results", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.string "time_taken"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_restaurant_results_on_restaurant_id"
+    t.index ["user_id"], name: "index_restaurant_results_on_user_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.integer "rating"
+    t.string "address"
+    t.string "cuisine"
+    t.string "phone"
+    t.integer "price"
+    t.string "image_1"
+    t.string "image_2"
+    t.string "image_3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +103,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_141555) do
   add_foreign_key "movie_results", "movies"
   add_foreign_key "movie_results", "users"
   add_foreign_key "options", "custom_results"
+  add_foreign_key "restaurant_results", "restaurants"
+  add_foreign_key "restaurant_results", "users"
 end
