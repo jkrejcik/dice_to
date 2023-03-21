@@ -1,4 +1,5 @@
 <div class="container w-100 mt-5">
+  <h1 class="justify-self-center mb-5">Make your own!</h1>
   <%= form_for @custom_result, url: custom_results_path, method: :post do |f| %>
     <div data-controller="nested-form">
       <%= f.text_field :question, required: true, autofocus: true, class: "form-field mb-5", placeholder: 'Enter a question...', oninvalid: "this.setCustomValidity('Please enter a valid question')", oninput: "setCustomValidity('')" %>
