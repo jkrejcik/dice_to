@@ -20,6 +20,5 @@ Rails.application.routes.draw do
   get "custom", to: "custom_results#new", as: :custom_results
   post "custom", to: "custom_results#create"
   get "custom/:id", to: "custom_results#show", as: :custom_result
-
-  # resources :movie_results, only: %i[create index show]
+  delete 'custom/:id', to: 'custom_results#destroy'
 end
