@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "history/:id/edit", to: "results#edit", as: :edit_history
   patch "history/:id", to: "results#update"
 
-  # Routes for movie category
+  # Routes for movie category (WATCH)
   get "movie-questions", to: "movie_results#question", as: :movie_questions
   post "movie-questions", to: "movie_results#create_suggestion"
   get "suggestion", to: "movie_results#show", as: :suggestion
@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   get "custom/:id", to: "custom_results#show", as: :custom_result
 
   # resources :movie_results, only: %i[create index show]
+
+  # Routes for restaurant category (EAT)
+  get "restaurant-questions", to: "restaurant_results#question", as: :restaurant_questions
+  post "restaurant-questions", to: "restaurant_results#create_suggestion"
+  get "suggestion", to: "restaurant_results#show", as: :suggestion
+  # Did not create "restaurant-accept" route as it was not used in movies (we saved result already in create_suggestion)
 end
