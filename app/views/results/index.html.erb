@@ -49,7 +49,7 @@
           <a href="" class="card-link">Details</a>
         </div> %>
 
-          <div class="time-ago custom-time position-absolute bottom-0 end-0">
+          <span class="time-ago custom-time position-absolute bottom-0 end-0">
             <% case (@today - result.created_at).round %>
               <% when 0..60 %>
                 < 1 minute ago
@@ -64,7 +64,7 @@
               <% else %>
               <%= ((@today - result.created_at) / 86400).round %> days ago
             <% end %>
-          </div>
+          </span>
       </li>
     <% end %>
   </ul>
