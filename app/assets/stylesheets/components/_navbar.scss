@@ -66,10 +66,13 @@
 
   .navbar-nav .dropdown-mobile span {
     display: flex;
-    flex-grow: 1;
     padding: 8px;
     color: white;
     text-align: center;
     font-size: 32px;
+  }
+
+  .navbar-nav .dropdown-mobile span:hover {
+    transform: scale(1.05);
   }
 }
