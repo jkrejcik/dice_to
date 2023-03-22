@@ -47,6 +47,7 @@ export default class extends Controller {
       answeredPartial.classList.add("d-none")
       document.getElementById("step-box").classList.add("d-none")
     }
+    window.scrollTo({ top: (0, 60), behavior: 'smooth' })
   }
 
   // To be built out to allow user to switch effectively by clicking on the step indicators
