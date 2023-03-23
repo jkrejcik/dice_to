@@ -5,7 +5,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .category-box {
     display: flex;
     justify-content: center;
@@ -15,4 +15,13 @@
     margin-left: 40px;
   }
 
+  .category-box .text-center {
+    margin-top: 40px;
+  }
+  
+  .category-box .text-center:hover {
+    transform: scale(1.1);
+  } 
+  
 }
+
