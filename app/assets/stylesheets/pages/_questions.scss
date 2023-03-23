@@ -40,3 +40,13 @@
   #nextBtn:hover {
     transform: scale(1.05);
   }
+
+  @media (min-width: 768px) {
+    .container {
+      width: 600px;
+    }
+
+    .big-button {
+      margin-top: 40px;
+    }
+  }
