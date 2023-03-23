@@ -1,6 +1,10 @@
 // Specific CSS for your home-page
+
+
+
 .home-page {
   padding: 50px;
+  
   h1 {
     font-size: 100px;
   }
@@ -22,3 +26,14 @@
     color: #01C97B;
   }
 }
+
+@media (min-width: 768px) {
+  .background-image {
+    background-image: url("dice_desaturated.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 980px;
+  }
+}
+
+
