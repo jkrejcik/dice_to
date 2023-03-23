@@ -15,26 +15,24 @@
           <%# <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           <%# </li>  %>
-          <%# <li class="nav-item dropdown"> %>
             <%= image_tag "https://picsum.photos/200?grayscale", class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <li class="nav-item">
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "History", history_path, class: "dropdown-item" %>
                 <%= link_to "Categories", categories_path, class: "dropdown-item" %>
                 <%= link_to "DIY", custom_path, class: "dropdown-item" %>
+                <%= link_to "History", history_path, class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
              </li>
             <li class="nav-item">
               <div class="dropdown-mobile" aria-labelledby="navbarDropdown">
-                <span><%= link_to "History", history_path, class: "dropdown-item" %></span>
                 <span><%= link_to "Categories", categories_path, class: "dropdown-item" %></span>
                 <span><%= link_to "DIY", custom_path, class: "dropdown-item" %></span>
+                <span><%= link_to "History", history_path, class: "dropdown-item" %></span>
                 <span><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></span>
               </div>
               <hr>
             </li>
-          <%# </li> %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

@@ -1,6 +1,6 @@
 class MovieResultsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create_suggestion
-  before_action :set_movie, only: %i[show index]
+  before_action :set_movie, only: %i[show]
   before_action :set_options, only: %i[question create_suggestion]
   before_action :colour, only: %i[create_suggestion question]
   # before_action :movie_result_params, only: :create_suggestion
@@ -16,7 +16,7 @@ class MovieResultsController < ApplicationController
     redirect_to(movie_questions_path) and return if @result.blank?
 
     if MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
-      redirect_to suggestion_path
+      redirect_to movie_suggestion_path
     else
       render "question"
     end
