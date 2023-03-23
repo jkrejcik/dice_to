@@ -27,12 +27,11 @@
     border: 5px solid white;
 }
 
-@media screen and (max-width: 480px) {
-    .colour-btn + label {
-        width: 140px;
-        height: 140px;
-        font-size: 24px;
-        padding: 20px;
-        margin: 5px;
+@media screen and (max-width: 768px) {
+    .checkbox-div > label {
+        width: 6.5em;
+        height: 6.5em;
+        font-size: 16px;
+        margin: 4px;
     }
 }

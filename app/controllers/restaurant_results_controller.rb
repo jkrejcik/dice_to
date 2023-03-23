@@ -33,30 +33,20 @@ class RestaurantResultsController < ApplicationController
   end
 
   def set_options
+    @restaurant_cuisines = []
     @years_for_select = [["60s", 1960], ["70s", 1970], ["80s", 1980], ["90s", 1990], ["2000s", 2000], ["2010s", 2010], ["2020s", 2020]]
   end
 
   def colour
-    @colour_genre_key = {
-      orange: "Animation",
-      brown: "Adventure",
-      pink: "Comedy",
-      blue: "Drama",
-      green: "Crime",
-      red: "Horror",
-      yellow: "Family",
-      purple: "Action"
+    @colour_cuisine_key = {
+      orange: "Chinese", brown: "Mexican", pink: "Jamaican", blue: "Drama", green: "Italian",
+      red: "Taiwanese", yellow: "Spanish", purple: "French", violet: "German", emerald: "Eritrean",
+      grey: "Russian", jasmine: "Japanese", myrtle: "Greek", navy: "Vietnamese", maroon: "Polish", cream: "American"
     }
-
     @colour_hash_key = {
-      orange: "#FC7A57",
-      brown: "#5C5346",
-      pink: "#E56399",
-      blue: "#5C78FF",
-      green: "#01C97B",
-      red: "#FF653E",
-      yellow: "#FFCA14",
-      purple: "#89608E"
+      orange: "#FC7A57", brown: "#5b4b49", pink: "#E56399", blue: "#5C78FF", green: "#01C97B",
+      red: "#FF653E", yellow: "#FFCA14", purple: "#89608E", navy: "#19297C", myrtle: "#297373",
+      cream: "#FFE5D4", grey: "#BDB4BF", violet: "#f0d3f7", emerald: "#26532B", jasmine: "#ffd972", maroon: "#92374d"
     }
   end
 end
