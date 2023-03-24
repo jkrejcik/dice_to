@@ -4,3 +4,24 @@
     font-size: 40px;
   }
 }
+
+@media (min-width: 1200px) {
+  .category-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .category-box .text-center:not(:first-child) {
+    margin-left: 40px;
+  }
+
+  .category-box .text-center {
+    margin-top: 40px;
+  }
+  
+  .category-box .text-center:hover {
+    transform: scale(1.1);
+  } 
+  
+}
+

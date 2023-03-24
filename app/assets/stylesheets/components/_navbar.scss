@@ -8,5 +8,75 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+}
+
+.navbar-lewagon .navbar-brand:hover {
+  transform: scale(1.15);
+}
+
+.navbar-nav .dropdown-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 575px) {
+  .navbar-lewagon {
+    background: transparent;
+  }
+
+  .navbar hr {
+    border: none;
+    height: 3px;
+    color: white;
+    background-color: white;
+  }
+
+  .navbar-lewagon .navbar-brand {
+    color: #ffffff;
+    padding-top: 14px;
+  }
+
+  .navbar-toggler {
+    color: #ffffff;
+    padding-top: 14px;
+    font-size: 32px;
+  }
+
+  .navbar-toggler:hover {
+    transform: scale(1.1);
+  }
+
+  .navbar {
+    --bs-navbar-toggler-border-color: black;
+    --bs-navbar-toggler-focus-width: 0;
+  }
+
+  .navbar-nav .avatar {
+    display: none;
+  }
+
+  .navbar-nav .dropdown-menu {
+    display: none;
+  }
+
+  .navbar-nav .dropdown-mobile {
+    display: unset;
+    margin-top: 20px;
+  }
+
+  .navbar-nav .dropdown-mobile span {
+    display: flex;
+    padding: 8px;
+    color: white;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .navbar-nav .dropdown-mobile span:hover {
+    transform: scale(1.05);
+  }
+
+  .navbar-toggler:focus {
+    color: #5C78FF;
+  }
 }

@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :movie_results
   has_many :custom_results
+  has_many :restaurant_results
 end

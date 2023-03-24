@@ -2,18 +2,18 @@
 
     <div class="panel">
       <div class="d-flex justify-content-center mb-2">
-          <%= image_tag "#{@movie_result.movie.image}", width: 300 %>
+          <%= image_tag "#{@restaurant_result.restaurant.image_1}", width: 300 %>
       </div>
-      <h1><%= @movie_result.movie.title %></h1>
-      <p><%= @movie_result.movie.overview %></p>
+      <h1><%= @restaurant_result.restaurant.name %></h1>
+      <p><%= @restaurant_result.restaurant.cuisine %></p>
       <div class="d-none">
             <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
-            <div class="time"><%= @movie_result.time_taken %></div>
+            <div class="time"><%= @restaurant_result.time_taken %></div>
       </div>
       <div class="d-flex justify-content-between">
         <input type="submit" value="Accept" class="accept-btn" data-time-saved-target="accept" data-action="click->time-saved#final">
         <%= link_to "Reject", movie_questions_path, class: "back-to-roll-btn" %>
-        <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
+        <%= link_to "◀ To Feed", history_path, class: "accept-btn d-none" %>
       </div>
     </div>
 </div>

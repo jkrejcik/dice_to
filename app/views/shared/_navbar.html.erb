@@ -1,12 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand d-flex" do %>
+      <%# <h4>DiceTo</h4> %>
       <i class="fa-solid fa-dice fa-xl fa-shake"></i>
-      <%# <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+      <i class="fa-solid fa-bars"></i>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,13 +15,24 @@
           <%# <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           <%# </li>  %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://picsum.photos/200?grayscale", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "History", history_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+            <%= image_tag "https://picsum.photos/200?grayscale", class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <li class="nav-item">
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Categories", categories_path, class: "dropdown-item" %>
+                <%= link_to "DIY", custom_path, class: "dropdown-item" %>
+                <%= link_to "History", history_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+             </li>
+            <li class="nav-item">
+              <div class="dropdown-mobile" aria-labelledby="navbarDropdown">
+                <span><%= link_to "Categories", categories_path, class: "dropdown-item" %></span>
+                <span><%= link_to "DIY", custom_path, class: "dropdown-item" %></span>
+                <span><%= link_to "History", history_path, class: "dropdown-item" %></span>
+                <span><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></span>
+              </div>
+              <hr>
+            </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

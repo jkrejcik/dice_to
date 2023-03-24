@@ -34,8 +34,11 @@ export default class extends Controller {
       document.getElementsByClassName("time")[0].innerText = timeTaken.toFixed(2) + " seconds"
     }
     // removing button on accept and showing the time saved
-    document.getElementsByClassName("d-none")[0].classList.remove("d-none")
+    Array.from(document.getElementsByClassName("d-none")).forEach((button) => {
+        button.classList.remove("d-none")
+    })
     this.acceptTarget.classList.add("d-none")
+    document.getElementsByClassName("back-to-roll-btn")[0].classList.add("d-none")
   }
 }
 

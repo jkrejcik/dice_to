@@ -1,6 +1,6 @@
 <div data-controller="question">
   <%= render "shared/steps" %>
-  <%= form_for @movie_result, url: movie_questions_path, method: :post do |f| %>
+  <%= form_for @restaurant_result, url: restaurant_questions_path, method: :post do |f| %>
 
     <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
@@ -21,13 +21,6 @@
         <h2 style="text-align: center;">What decade do you identify most with?</h2>
       </div>
       <%= render "shared/decade_form" %>
-    </div>
-
-    <div class="tab d-none" data-question-target="all">
-      <div class="d-flex justify-content-center">
-        <h2 style="text-align: center;">What weather makes you happy?</h2>
-      </div>
-      <%= render "shared/weather_form" %>
     </div>
 
     <div style="overflow:auto;">
