@@ -1,6 +1,5 @@
 class MovieResultsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create_suggestion
-  before_action :set_movie, only: %i[show]
   before_action :set_options, only: %i[question create_suggestion]
   before_action :colour, only: %i[create_suggestion question]
   # before_action :movie_result_params, only: :create_suggestion
@@ -22,16 +21,11 @@ class MovieResultsController < ApplicationController
   end
 
   def show
-  end
-
-  def index
+    # @movie_result = MovieResult.where(user: current_user).last
+    @movie_result = MovieResult.find(params[:id])
   end
 
   private
-
-  def set_movie
-    @movie_result = MovieResult.where(user: current_user).last
-  end
 
   def set_result
     genre_candidates = set_genre_candidates

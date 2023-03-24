@@ -7,7 +7,7 @@
     <% @movie_results.each do |result| %>
       <li class="card">
         <h3 class="card-title"><%= result.movie.title %></h3>
-        <%= image_tag "#{result.movie.image}", class: "card-img-top" %>
+        <%= link_to image_tag("#{result.movie.image}", class: "card-img-top"), movie_suggestion_path(result.id) %>
             <span class="time-ago position-absolute bottom-0 end-0 custom-time">
               <% case (@today - result.created_at).round %>
                 <% when 0..60 %>
