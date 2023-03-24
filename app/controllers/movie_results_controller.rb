@@ -12,7 +12,6 @@ class MovieResultsController < ApplicationController
   def create_suggestion
     @result = Movie.all.sample
     @result = set_result if params[:colour] || params[:mood] || params[:decade] || params[:weather]
-
     redirect_to(movie_questions_path) and return if @result.blank?
 
     if MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
@@ -38,8 +37,9 @@ class MovieResultsController < ApplicationController
     genre_candidates = set_genre_candidates
     year_candidates = set_year_candidates
     mood_candidates = set_mood_candidates
+    weather_candidates = set_weather_candidates
 
-    @result = (genre_candidates + mood_candidates + year_candidates).sample
+    @result = (genre_candidates + mood_candidates + year_candidates + weather_candidates).sample
   end
 
   def set_genre_candidates
@@ -59,7 +59,7 @@ class MovieResultsController < ApplicationController
 
   def set_weather_candidates
     weather = params[:weather] if params[:weather]
-    weather ? set_mood(mood) : []
+    weather ? set_weather(weather) : []
   end
 
   def set_mood(mood)
@@ -77,15 +77,31 @@ class MovieResultsController < ApplicationController
     end
   end
 
+  def set_weather(weather)
+    case weather
+    when "cloudy"
+      Movie.where(@weather_words[0][:cloudy].map { "overview ilike ?" }.join(" or "), *@weather_words[0][:cloudy])
+    when "sunny"
+      Movie.where(@weather_words[2][:sunny].map { "overview ilike ?" }.join(" or "), *@weather_words[2][:sunny])
+    when "rainy"
+      []
+    when "stormy"
+      []
+    else
+      []
+    end
+  end
+
   def set_options
     @movie_genres = ["Drama", "Comedy", "Animation", "Romance", "Fantasy", "Thriller",
                      "Western", "Adventure", "Action", "Horror", "Family", "Crime",
                      "Music", "History", "Science Fiction", "War"]
-    @years_for_select = [["60s", 1960], ["70s", 1970], ["80s", 1980], ["90s", 1990], ["2000s", 2000], ["2010s", 2010], ["2020s", 2020]]
+    @years_for_select = [["60s", 1960], ["70s", 1970], ["80s", 1980], ["90s", 1990],
+                         ["2000s", 2000], ["2010s", 2010], ["2020s", 2020]]
     @sad_words = ["%anger%", "%sad%", "%kill%", "%death%", "%fail%", "%cry%"]
     @happy_words = ["%happy%", "%success%", "%joy%", "%dog%", "%family%", "%love%"]
-    @weather_words = [{ cloudy: ["%dark%", "%dreary%", "%grey%", "%overcase%"] }, { clear: ["%light%", "%day%"] },
-                      { sunny: ["%sun%"] }, { rainy: ["%storm%", "%rain%", "%wet%", "%sea%"] }]
+    @weather_words = [{ cloudy: ["%dark%", "%dreary%", "%grey%", "%overcast%"] }, { rainy: ["%wet%", "%moist%", "%fog%"] },
+                      { sunny: ["%sun%", "%shine%", "%ray%", "%light%", "%bright%"] }, { storm: ["%storm%", "%tumultuous%", "%windy%", "%sea%", "%miserable", "%loud%"] }]
     @colours = ["blue", "green", "yellow", "red", "pink", "orange", "brown", "purple"]
     @sqlhappy = @happy_words.map { "overview ilike ?" }.join(" or ")
     @sqlsad = @sad_words.map { "overview ilike ?" }.join(" or ")
