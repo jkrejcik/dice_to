@@ -3,10 +3,12 @@ import Pluralize from 'pluralize'
 
 // Connects to data-controller="time-saved"
 export default class extends Controller {
-  static targets = ["roll", "accept"]
+  static targets = ["roll", "accept", "panel"]
 
   connect() {
     this.startTime = new Date()
+    if (this.panelTarget.attributes.class.value.includes("movie")) { this.averageDecision = 450 }
+    if (this.panelTarget.attributes.class.value.includes("restaurant")) { this.averageDecision = 840 }
   }
 
   time(event){
@@ -16,13 +18,12 @@ export default class extends Controller {
   }
 
   final(event){
-    let averageMovieDecision = 450
     // getting time from question page
     let timeSoFar = parseFloat((document.getElementsByClassName("time"))[0].innerText)
     let approvalTime = new Date()
     // elapsed time on page before decision
     let extraDecisionTime = Math.abs(this.startTime - approvalTime) / 1000
-    let timeTaken = averageMovieDecision - (timeSoFar + extraDecisionTime)
+    let timeTaken = this.averageDecision - (timeSoFar + extraDecisionTime)
     // adding text with answer
     if (timeTaken > 60) {
       let minutes = Math.floor(timeTaken / 60) % 60;
