@@ -1,15 +1,17 @@
 <div class="categories justify-content-center">
-  <h2 class="text-center mb-5 page-title">CATEGORIES</h2>
-  <p class="text-center">
-    <%= link_to "Watch", movie_questions_path, class: "category-button-watch" %>
-  </p>
-  <p class="text-center">
-    <%= link_to "Eat", restaurant_questions_path, class: "category-button-eat" %>
-  </p>
-  <p class="text-center">
-    <%= link_to "Wear", movie_questions_path, class: "category-button-wear" %>
-  </p>
-  <p class="text-center">
-    <%= link_to "Custom", custom_path, class: "category-button-custom"%>
-  </p>
+  <h2 class="mb-5 page-title">CATEGORIES</h2>
+  <div class="category-box">
+    <p class="text-center">
+      <%= link_to "Watch", movie_questions_path, class: "category-button-watch" %>
+    </p>
+    <p class="text-center">
+      <%= link_to "Eat", restaurant_questions_path, class: "category-button-eat" %>
+    </p>
+    <p class="text-center">
+      <%= link_to "Wear", movie_questions_path, class: "category-button-wear" %>
+    </p>
+    <p class="text-center">
+      <%= link_to "Custom", custom_path, class: "category-button-custom"%>
+    </p>
+  </div>
 </div>

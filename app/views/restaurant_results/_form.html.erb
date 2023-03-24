@@ -1,4 +1,4 @@
-<div class="container" data-controller="question">
+<div data-controller="question">
   <%= render "shared/steps" %>
   <%= form_for @restaurant_result, url: restaurant_questions_path, method: :post do |f| %>
 
@@ -11,7 +11,7 @@
 
     <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
-        <h2>How are you feeling today?</h2>
+        <h2 style="text-align: center;">How are you feeling today?</h2>
       </div>
       <%= render "shared/mood_form" %>
     </div>
