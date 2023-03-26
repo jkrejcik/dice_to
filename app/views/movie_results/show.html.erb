@@ -6,6 +6,7 @@
       <h1><%= @movie_result.movie.title %></h1>
       <p><%= @movie_result.movie.overview %></p>
       <div>
+
         <%= hidden_field_tag "", @movie_result.time_taken, class: "time" %>
         <% if @movie_result.accepted.nil? %>
           <%= form_for @movie_result, url: movie_suggestion_path(@movie_result), method: :patch do |f| %>

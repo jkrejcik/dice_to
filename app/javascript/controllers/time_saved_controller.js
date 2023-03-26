@@ -29,6 +29,7 @@ export default class extends Controller {
     let decisionTime = new Date()
     let timeTaken = Math.abs(this.startTime - decisionTime) / 1000
     document.getElementById("time_taken").value = timeTaken
+    console.log(timeTaken)
   }
 
   final(event){
