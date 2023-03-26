@@ -108,9 +108,14 @@
     }
   }
 
-  // .card-img-top {
-  //   background-size: cover;
-  // }
+  .card .card-img-top::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
 
   .custom-time {
     margin-right: 16px;

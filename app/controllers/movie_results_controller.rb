@@ -1,9 +1,7 @@
 class MovieResultsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create_suggestion
-  before_action :set_movie, only: %i[show]
   before_action :set_options, only: %i[question create_suggestion]
   before_action :colour, only: %i[create_suggestion question]
-  # before_action :movie_result_params, only: :create_suggestion
 
   def question
     @movie_result = MovieResult.new
@@ -15,23 +13,29 @@ class MovieResultsController < ApplicationController
     redirect_to(movie_questions_path) and return if @result.blank?
 
     if MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
-      redirect_to movie_suggestion_path
+      redirect_to movie_suggestion_path(MovieResult.where(user: current_user).last)
     else
       render "question"
     end
   end
 
   def show
+    # @movie_result = MovieResult.where(user: current_user).last
+    @movie_result = MovieResult.find(params[:id])
   end
 
-  def index
+  def update
+    @movie_result = MovieResult.find(params[:id])
+    case params[:commit]
+    when "Accept"
+      @movie_result.accepted = true
+      redirect_to movie_suggestion_path(@movie_result) if @movie_result.save
+    when "Reject"
+      redirect_to movie_questions_path if @movie_result.delete
+    end
   end
 
   private
-
-  def set_movie
-    @movie_result = MovieResult.where(user: current_user).last
-  end
 
   def set_result
     genre_candidates = set_genre_candidates

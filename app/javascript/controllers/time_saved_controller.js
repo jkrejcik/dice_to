@@ -15,11 +15,13 @@ export default class extends Controller {
     let decisionTime = new Date()
     let timeTaken = Math.abs(this.startTime - decisionTime) / 1000
     document.getElementById("time_taken").value = timeTaken
+    console.log(timeTaken)
   }
 
   final(event){
     // getting time from question page
     let timeSoFar = parseFloat((document.getElementsByClassName("time"))[0].innerText)
+    console.log(timeSoFar)
     let approvalTime = new Date()
     // elapsed time on page before decision
     let extraDecisionTime = Math.abs(this.startTime - approvalTime) / 1000
