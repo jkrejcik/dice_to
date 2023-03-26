@@ -13,9 +13,8 @@ class RestaurantResultsController < ApplicationController
     redirect_to(restaurant_questions_path) and return if @result.blank?
 
     if RestaurantResult.create(restaurant_id: @result.id, user: current_user, time_taken: params[:time_taken])
-      redirect_to restaurant_suggestion_path
+      redirect_to restaurant_suggestion_path((MovieResult.where(user: current_user).last))
     else
-      raise
       render "question"
     end
   end
@@ -24,6 +23,18 @@ class RestaurantResultsController < ApplicationController
   end
 
   def index
+  end
+
+  def update
+    @restaurant_result = RestaurantResult.find(params[:id])
+    case params[:commit]
+    when "Accept"
+      @restaurant_result.accepted = true
+      @restaurant_result.time_taken = params[:time_taken]
+      redirect_to restaurant_suggestion_path(@restaurant_result) if @restaurant_result.save
+    when "Reject"
+      redirect_to restaurant_questions_path if @restaurant_result.delete
+    end
   end
 
   private
