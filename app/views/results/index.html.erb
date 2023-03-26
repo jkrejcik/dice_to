@@ -31,6 +31,37 @@
     <% end %>
   </ul>
 
+    <ul class="cards mb-2">
+    <li class="card card-first-eat">
+        <h3>Eat</h3>
+    </li>
+    <% @restaurant_results.each do |result| %>
+      <li class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= result.restaurant.image_1 %>)">
+      <%= link_to "", restaurant_suggestion_path(result.id), class: "card-img-top" %>
+        <h3 class="card-title"><%= result.restaurant.name %></h3>
+          <span class="time-ago position-absolute bottom-0 end-0">
+            <% case (@today - result.created_at).round %>
+              <% when 0..60 %>
+                < 1 minute ago
+              <% when 61..3600 %>
+                <%= ((@today - result.created_at) / 60).round %> minutes ago
+              <% when 3601..7199 %>
+                1 hour ago
+              <% when 7200..86400 %>
+                <%= ((@today - result.created_at) / 3600).round %> hours ago
+              <% when 86401..172799 %>
+                yesterday
+              <% else %>
+              <%= ((@today - result.created_at) / 86400).round %> days ago
+            <% end %>
+          </span>
+        <%# <div class="card-link-wrapper">
+          <a href="" class="card-link">Details</a>
+        </div> %>
+      </li>
+    <% end %>
+  </ul>
+
    <ul class="cards mb-2">
     <li class="card card-first-custom">
         <h3>Custom</h3>

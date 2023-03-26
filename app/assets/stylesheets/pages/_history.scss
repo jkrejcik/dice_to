@@ -129,7 +129,14 @@
     background-color: black;
   }
 
-  .card-first-custom, .card-first-watch {
+  .card-first-eat {
+    background-image: url(eat.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+  }
+
+  .card-first-custom, .card-first-watch, .card-first-eat {
     justify-content: center;
     align-items: center;
   }
