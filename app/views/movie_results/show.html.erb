@@ -1,5 +1,4 @@
 <div class="container mt-5" data-controller="time-saved">
-
     <div class="movie panel" data-time-saved-target="panel">
       <div class="d-flex justify-content-center mb-2">
           <%= image_tag "#{@movie_result.movie.image}", width: 300 %>
@@ -7,25 +6,24 @@
       <h1><%= @movie_result.movie.title %></h1>
       <p><%= @movie_result.movie.overview %></p>
       <div>
-      <%= hidden_field_tag "", @movie_result.time_taken, class: "time" %>
+
+        <%= hidden_field_tag "", @movie_result.time_taken, class: "time" %>
         <% if @movie_result.accepted.nil? %>
           <%= form_for @movie_result, url: movie_suggestion_path(@movie_result), method: :patch do |f| %>
             <div class="d-flex justify-content-between">
               <%= f.submit "Accept", class: "accept-btn", "data-time-saved-target": "accept", "data-action": "click->time-saved#final"%>
               <%= f.submit "Reject", class: "back-to-roll-btn" %>
+              <%= hidden_field_tag :time_taken, :time %>
             </div>
-          <% end %>
-          <%# <input type="submit" value="Accept" class="accept-btn" > %>
-          <%# run this code if input button is clicked %>
-          <%# <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
-        <% else %>
-          <div>
-            <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
-            <div class="time">
-              <%= @movie_result.time_taken %>
-            </div>
-          </div>
-          <%= link_to "◀ Back to Feed", history_path, class: "accept-btn" %>
+            <% end %>
+            <% else %>
+              <div class="">
+                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
+                <div class="time">
+                  <%= @movie_result.time_taken %>
+                </div>
+                <%= link_to "◀ Back to Feed", history_path, class: "accept-btn" %>
+              </div>
         <% end %>
       </div>
     </div>
