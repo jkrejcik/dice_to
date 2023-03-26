@@ -88,7 +88,13 @@ for page in 1..20 do
   end
 end
 
-puts "=== CREATING 1 Restaurant ==="
+
+@client = GooglePlaces::Client.new("AIzaSyC7RqmEQxoPXVBTW4IJheItgSO01evh1Rk")
+
+puts "=== CREATING Restaurants for JAN in Barcelona ==="
+
+
+
 
 new_restaurant = Restaurant.new
 new_restaurant.name = "Can Dende"
@@ -105,5 +111,9 @@ new_restaurant.image_1 = "https://source.unsplash.com/random?restaurant"
 new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
 new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
 new_restaurant.save
+
+
+
+
 
 puts "=== FINISHED IN #{(Time.now - start).round}s ==="
