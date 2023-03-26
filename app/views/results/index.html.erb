@@ -41,8 +41,8 @@
             <h3 class="card-title"><%= result.question %></h3>
             <%= link_to "x", custom_result_path(result), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
-          <div class="mt-5 d-flex justify-content-center">
-            <h3><%= result.answer %></h3>
+          <div class="mt-5 d-flex justify-content-center card-text">
+            <%= result.answer %>
           </div>
 
         <%# <div class="card-link-wrapper">
