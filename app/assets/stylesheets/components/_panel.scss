@@ -21,6 +21,9 @@
   padding: 30px;
   margin: 60px;
   text-align: center;
+  @media screen and (max-width: 575px){
+    margin: 0;
+  }
 }
 
 .panel .answer {
