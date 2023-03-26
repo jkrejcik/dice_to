@@ -29,6 +29,7 @@ class MovieResultsController < ApplicationController
     case params[:commit]
     when "Accept"
       @movie_result.accepted = true
+      @movie_result.time_taken = params[:time_taken]
       redirect_to movie_suggestion_path(@movie_result) if @movie_result.save
     when "Reject"
       redirect_to movie_questions_path if @movie_result.delete
