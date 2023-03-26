@@ -40,6 +40,7 @@ export default class extends Controller {
     if (id == "mood") { this.allButtons = document.getElementsByClassName("checkbox-emoji") }
     if (id == "decade") { this.allButtons = document.getElementsByClassName("checkbox-element-decade") }
     if (id == "weather") { this.allButtons = document.getElementsByClassName("checkbox-weather") }
+    if (id == "star") { this.allButtons = document.getElementsByClassName("checkbox-star") }
     Array.from(this.allButtons).forEach((button) => {
       if (button.id != longID) { button.parentElement.classList.add("d-none") }
     })
