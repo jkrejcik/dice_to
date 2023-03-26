@@ -26,9 +26,13 @@ class MovieResultsController < ApplicationController
 
   def update
     @movie_result = MovieResult.find(params[:id])
-    @movie_result.accepted = true if params[:accepted]
-    @movie_result.accepted = false if params[:accepted]
-    redirect_to movie_suggestion_path(@movie_result)
+    case params[:commit]
+    when "Accept"
+      @movie_result.accepted = true
+      redirect_to movie_suggestion_path(@movie_result) if @movie_result.save
+    when "Reject"
+      redirect_to movie_questions_path if @movie_result.delete
+    end
   end
 
   private
