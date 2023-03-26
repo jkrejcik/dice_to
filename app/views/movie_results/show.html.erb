@@ -11,9 +11,16 @@
             <div class="time"><%= @movie_result.time_taken %></div>
       </div>
       <div class="d-flex justify-content-between">
-        <input type="submit" value="Accept" class="accept-btn" data-time-saved-target="accept" data-action="click->time-saved#final">
-        <%= link_to "Reject", movie_questions_path, class: "back-to-roll-btn" %>
-        <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
+
+        <% if @movie_result.accepted.nil? %>
+          <%= simple_form_for(@movie_result), movie_suggestion(@movie_result)  %>
+          <input type="submit" value="Accept" class="accept-btn" data-time-saved-target="accept" data-action="click->time-saved#final">
+          <%# run this code if input button is clicked %>
+          <%= link_to "Reject", movie_questions_path, class: "back-to-roll-btn" %>
+          <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
+        <% elsif @movie_result.accepted.true? || @movie_result.accepted.false?  %>
+          <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
+        <% end %>
       </div>
     </div>
 </div>

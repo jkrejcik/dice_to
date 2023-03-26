@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "movie-questions", to: "movie_results#question", as: :movie_questions
   post "movie-questions", to: "movie_results#create_suggestion"
   get "movie-suggestion/:id", to: "movie_results#show", as: :movie_suggestion
-  get "movie-accept", to: "movie_results#create"
+  patch "movie-suggestion/:id", to: "movie_results#update"
 
   # Routes for custom process
   get "custom", to: "custom_results#new", as: :custom_results
