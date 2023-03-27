@@ -35,6 +35,13 @@ body {
     font-family: 'Monument Extended Regular';
     color: white;
     background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
 }
 
 @font-face {
