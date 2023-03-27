@@ -1,45 +1,51 @@
 class MovieResultsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create_suggestion
-  before_action :set_movie, only: %i[show]
   before_action :set_options, only: %i[question create_suggestion]
   before_action :colour, only: %i[create_suggestion question]
-  # before_action :movie_result_params, only: :create_suggestion
 
   def question
     @movie_result = MovieResult.new
   end
 
   def create_suggestion
-    @result = Movie.all.sample
-    @result = set_result if params[:colour] || params[:mood] || params[:decade] || params[:weather]
-    redirect_to(movie_questions_path) and return if @result.blank?
+    @result = set_result if params[:colour] || params[:mood] || params[:decade] || params[:weather] || params[:star]
+    @result = Movie.all.sample if @result.nil?
 
-    if MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
-      redirect_to movie_suggestion_path
-    else
-      render "question"
-    end
+    MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
+    redirect_to movie_suggestion_path(MovieResult.where(user: current_user).last)
   end
 
   def show
+    @movie_result = MovieResult.find(params[:id])
   end
 
-  def index
+  def update
+    @movie_result = MovieResult.find(params[:id])
+    case params[:commit]
+    when "Accept"
+      @movie_result.accepted = true
+      @movie_result.time_taken = params[:time_taken]
+      redirect_to movie_suggestion_path(@movie_result) if @movie_result.save
+    when "Reject"
+      redirect_to movie_questions_path if @movie_result.delete
+    end
   end
 
   private
-
-  def set_movie
-    @movie_result = MovieResult.where(user: current_user).last
-  end
 
   def set_result
     genre_candidates = set_genre_candidates
     year_candidates = set_year_candidates
     mood_candidates = set_mood_candidates
     weather_candidates = set_weather_candidates
+    star_candidates = set_star_candidates
 
-    @result = (genre_candidates + mood_candidates + year_candidates + weather_candidates).sample
+    (genre_candidates + mood_candidates + year_candidates + weather_candidates + star_candidates).sample
+  end
+
+  def set_star_candidates
+    star_sign = params[:star] if params[:star]
+    star_sign ? star_sign(star_sign) : []
   end
 
   def set_genre_candidates
@@ -69,9 +75,9 @@ class MovieResultsController < ApplicationController
     when "sad"
       Movie.where(@sqlsad, *@sad_words)
     when "neutral"
-      []
+      return []
     when "bad"
-      []
+      ret[]
     else
       []
     end
@@ -90,6 +96,11 @@ class MovieResultsController < ApplicationController
     else
       []
     end
+  end
+
+  def star_sign(star_sign)
+    first_letter = star_sign[0]
+    Movie.where("title ilike '#{first_letter}%'")
   end
 
   def set_options

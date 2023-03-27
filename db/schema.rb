@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_21_192217) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_211700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_192217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "time_taken"
+    t.boolean "accepted"
     t.index ["movie_id"], name: "index_movie_results_on_movie_id"
     t.index ["user_id"], name: "index_movie_results_on_user_id"
   end
@@ -67,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_192217) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "accepted"
     t.index ["restaurant_id"], name: "index_restaurant_results_on_restaurant_id"
     t.index ["user_id"], name: "index_restaurant_results_on_user_id"
   end
@@ -74,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_192217) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "city"
-    t.integer "rating"
+    t.float "rating"
     t.string "address"
     t.string "cuisine"
     t.string "phone"

@@ -1,19 +1,30 @@
 <div class="container mt-5" data-controller="time-saved">
-
-    <div class="panel">
+    <div class="movie panel" data-time-saved-target="panel">
       <div class="d-flex justify-content-center mb-2">
           <%= image_tag "#{@movie_result.movie.image}", width: 300 %>
       </div>
       <h1><%= @movie_result.movie.title %></h1>
       <p><%= @movie_result.movie.overview %></p>
-      <div class="d-none">
-            <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
-            <div class="time"><%= @movie_result.time_taken %></div>
-      </div>
-      <div class="d-flex justify-content-between">
-        <input type="submit" value="Accept" class="accept-btn" data-time-saved-target="accept" data-action="click->time-saved#final">
-        <%= link_to "Reject", movie_questions_path, class: "back-to-roll-btn" %>
-        <%= link_to "◀ Back to Feed", history_path, class: "accept-btn d-none" %>
+      <div>
+
+        <%= hidden_field_tag "", @movie_result.time_taken, class: "time" %>
+        <% if @movie_result.accepted.nil? %>
+          <%= form_for @movie_result, url: movie_suggestion_path(@movie_result), method: :patch do |f| %>
+            <div class="d-flex justify-content-between">
+              <%= f.submit "Accept", class: "accept-btn", "data-time-saved-target": "accept", "data-action": "click->time-saved#final"%>
+              <%= f.submit "Reject", class: "back-to-roll-btn" %>
+              <%= hidden_field_tag :time_taken, :time %>
+            </div>
+            <% end %>
+            <% else %>
+              <div>
+                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
+                <div class="time">
+                  <%= @movie_result.time_taken %>
+                </div>
+                <%= link_to "◀ Back to Feed", history_path, class: "accept-btn" %>
+              </div>
+        <% end %>
       </div>
     </div>
 </div>
