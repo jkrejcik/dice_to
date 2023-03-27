@@ -1,12 +1,12 @@
 <div class="container w-75 mt-5">
-
+  
   <div class="panel">
     <p>Your question: <p>
     <h4><%= @custom_result.question %></h4>
     <br>
     <h1>Your answer: </h1>
     <div class="answer d-flex justify-content-center">
-      <%= @custom_result.answer %>!!
+      <%= @custom_result.answer %><p> !!</p>
     </div>
     <%= link_to "Categories", categories_path, class: "go-to-categories-btn" %>
   </div>
