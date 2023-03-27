@@ -4,7 +4,7 @@
           <%= image_tag "#{@restaurant_result.restaurant.image_1}", width: 300 %>
       </div>
       <h1><%= @restaurant_result.restaurant.name %></h1>
-      <p><%= @restaurant_result.restaurant.cuisine %></p>
+      <p><%= @restaurant_result.restaurant.city %></p>
       <div>
         <%= hidden_field_tag "", @restaurant_result.time_taken, class: "time" %>
         <% if @restaurant_result.accepted.nil? %>
