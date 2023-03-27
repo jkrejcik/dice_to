@@ -10,6 +10,7 @@ class MovieResultsController < ApplicationController
   def create_suggestion
     @result = set_result if params[:colour] || params[:mood] || params[:decade] || params[:weather] || params[:star]
     @result = Movie.all.sample if @result.nil?
+
     MovieResult.create(movie_id: @result.id, user: current_user, time_taken: params[:time_taken])
     redirect_to movie_suggestion_path(MovieResult.where(user: current_user).last)
   end
