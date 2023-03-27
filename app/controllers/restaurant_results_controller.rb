@@ -17,6 +17,7 @@ class RestaurantResultsController < ApplicationController
   end
 
   def show
+    @restaurant_result = RestaurantResult.find(params[:id])
   end
 
   def index

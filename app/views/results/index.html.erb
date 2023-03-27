@@ -37,7 +37,7 @@
     </li>
     <% @restaurant_results.each do |result| %>
       <li class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= result.restaurant.image_1 %>)">
-      <%= link_to "", restaurant_suggestion_path(result.id), class: "card-img-top" %>
+      <%= link_to "", restaurant_suggestion_path(result), class: "card-img-top" %>
         <h3 class="card-title"><%= result.restaurant.name %></h3>
           <span class="time-ago position-absolute bottom-0 end-0">
             <% case (@today - result.created_at).round %>
