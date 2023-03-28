@@ -11,6 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
+
+// Star rating
+@import "star-rating.js/dist/star-rating.css";
+
 html {
     scroll-behavior: smooth;
 }
