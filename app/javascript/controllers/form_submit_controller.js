@@ -8,10 +8,18 @@ export default class extends Controller {
     // console.log(this.formTargets)
   }
 
-  submit() {
-    console.log("submit")
-    console.log(element)
-    this.element.submit();
+  submit(event) {
+    // this.element.submit()
+    event.preventDefault()
+    const url = this.formTarget.action
+    fetch(url, {
+      method: "POST",
+      headers: { "Accept": "text/plain" },
+      body: new FormData(this.formTarget)
+    })
+      .then(response => response.text())
+      .then((data) => {
+        this.element.outerHTML = data
+      })
   }
-
 }

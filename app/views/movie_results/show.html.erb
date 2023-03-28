@@ -4,6 +4,9 @@
           <%= image_tag "#{@movie_result.movie.image}", width: 300 %>
       </div>
       <h1><%= @movie_result.movie.title %></h1>
+        <% unless @movie_result.rating.nil? %>
+          <p>Your Rating: <%= @movie_result.rating %></p>
+        <% end  %>
       <p><%= @movie_result.movie.overview %></p>
       <div>
 

@@ -5,12 +5,5 @@ import StarRating from "star-rating.js"
 export default class extends Controller {
   connect() {
     new StarRating(this.element)
-    console.log(this.element)
   }
-
-  // submit() {
-  //   console.log("Star rate submit")
-  //   console.log(element)
-  //   this.element.submit();
-  // }
 }
