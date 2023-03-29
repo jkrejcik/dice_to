@@ -5,36 +5,8 @@
     <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
         <h2 style="text-align: center;">What's your favourite colour?</h2>
-      </div>  
+      </div>
       <%= render "shared/colour_form" %>
-    </div>
-
-    <div class="tab d-none" data-question-target="all">
-      <div class="d-flex justify-content-center">
-        <h2 style="text-align: center;">How are you feeling today?</h2>
-      </div>
-      <%= render "shared/mood_form" %>
-    </div>
-
-    <div class="tab d-none" data-question-target="all">
-      <div class="d-flex justify-content-center">
-        <h2 style="text-align: center;">What decade do you identify most with?</h2>
-      </div>
-      <%= render "shared/decade_form" %>
-    </div>
-
-    <div class="tab d-none" data-question-target="all">
-      <div class="d-flex justify-content-center">
-        <h2 style="text-align: center;">What weather makes you happy?</h2>
-      </div>
-      <%= render "shared/weather_form" %>
-    </div>
-
-     <div class="tab d-none" data-question-target="all">
-      <div class="d-flex justify-content-center">
-        <h2 style="text-align: center;">What star are you aligning with?</h2>
-      </div>
-      <%= render "shared/star_form" %>
     </div>
 
     <div style="overflow:auto;">
@@ -46,6 +18,7 @@
 
     <div class="d-flex mt-5 justify-content-center">
       <%= hidden_field_tag :time_taken, :time %>
+      <%= hidden_field_tag :coordinates, params[:coordinates] %>
       <div>
         <input type="submit" value="ROLL" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
       </div>

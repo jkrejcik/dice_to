@@ -10,6 +10,10 @@ application.register("carousel", CarouselController)
 import FormSubmitController from "./form_submit_controller"
 application.register("form-submit", FormSubmitController)
 
+import GeolocationController from "./geolocation_controller"
+application.register("geolocation", GeolocationController)
+
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

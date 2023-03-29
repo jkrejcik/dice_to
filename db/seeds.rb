@@ -31,8 +31,6 @@ puts "- #{user3.first_name}"
 
 puts "=== CREATING 400 MOVIES ==="
 
-# url = "https://tmdb.lewagon.com/movie/top_rated"
-
 movie_genres = {
   "Action" => 28,
   "Adventure" => 12,
@@ -88,104 +86,4 @@ for page in 1..20 do
   end
 end
 
-@client = GooglePlaces::Client.new(ENV.fetch('GOOGLE_API'))
-
-puts "=== CREATING Restaurants for JAN ==="
-google_restaurants = @client.spots(41.398865875681906, 2.1989594723440535, :types => ['restaurant', 'food'], :radius => 2000, :detail => true).first(20)
-
-google_restaurants.each do |restaurant|
-  new_restaurant = Restaurant.new
-  new_restaurant.name = restaurant.name
-  new_restaurant.city = restaurant.city
-  new_restaurant.address = restaurant.formatted_address
-  new_restaurant.phone = restaurant.formatted_phone_number
-  new_restaurant.rating = restaurant.rating
-  new_restaurant.price = restaurant.price_level
-
-  if restaurant.photos.empty?
-    new_restaurant.image_1 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 1
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 2
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 3
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = restaurant.photos[2].fetch_url(800)
-  end
-  new_restaurant.save
-  puts "#{new_restaurant.id} - #{new_restaurant.name}."
-end
-
-puts "=== CREATING Restaurants for Ronan ==="
-google_restaurants = @client.spots(38.717318, -9.163907, :types => ['restaurant', 'food'], :radius => 2000, :detail => true).first(20)
-
-google_restaurants.each do |restaurant|
-  new_restaurant = Restaurant.new
-  new_restaurant.name = restaurant.name
-  new_restaurant.city = restaurant.city
-  new_restaurant.address = restaurant.formatted_address
-  new_restaurant.phone = restaurant.formatted_phone_number
-  new_restaurant.rating = restaurant.rating
-  new_restaurant.price = restaurant.price_level
-
-  if restaurant.photos.empty?
-    new_restaurant.image_1 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 1
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 2
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 3
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = restaurant.photos[2].fetch_url(800)
-  end
-  new_restaurant.save
-  puts "#{new_restaurant.id} - #{new_restaurant.name}."
-end
-
-puts "=== CREATING Restaurants for Jaro ==="
-google_restaurants = @client.spots(48.174730, 17.167260, :types => ['restaurant', 'food'], :radius => 2000, :detail => true).first(20)
-
-google_restaurants.each do |restaurant|
-  new_restaurant = Restaurant.new
-  new_restaurant.name = restaurant.name
-  new_restaurant.city = restaurant.city
-  new_restaurant.address = restaurant.formatted_address
-  new_restaurant.phone = restaurant.formatted_phone_number
-  new_restaurant.rating = restaurant.rating
-  new_restaurant.price = restaurant.price_level
-
-  if restaurant.photos.empty?
-    new_restaurant.image_1 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 1
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = "https://source.unsplash.com/random?restaurant"
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 2
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = "https://source.unsplash.com/random?restaurant"
-  elsif restaurant.photos.size == 3
-    new_restaurant.image_1 = restaurant.photos[0].fetch_url(800)
-    new_restaurant.image_2 = restaurant.photos[1].fetch_url(800)
-    new_restaurant.image_3 = restaurant.photos[2].fetch_url(800)
-  end
-  new_restaurant.save
-  puts "#{new_restaurant.id} - #{new_restaurant.name}."
-end
 puts "=== FINISHED IN #{(Time.now - start).round}s ==="
