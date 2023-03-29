@@ -1,8 +1,13 @@
-<div class="container mt-5" data-controller="time-saved">
+<div class="container-restaurant-show mt-5" data-controller="time-saved">
     <div class="restaurant panel" data-time-saved-target="panel">
-      <div class="d-flex justify-content-center mb-2">
-          <%= image_tag "#{@restaurant_result.restaurant.image_1}", width: 300 %>
-      </div>
+
+
+        <div class="image-grid">
+          <%= image_tag "#{@restaurant_result.restaurant.image_1}", class:"image-grid-col-2 image-grid-row-2" %>
+          <%= image_tag "#{@restaurant_result.restaurant.image_2}", class:"" %>
+          <%= image_tag "#{@restaurant_result.restaurant.image_3}", class:"" %>
+        </div>
+
       <h1><%= @restaurant_result.restaurant.name %></h1>
       <p><%= @restaurant_result.restaurant.city %></p>
       <div>
