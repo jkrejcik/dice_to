@@ -35,6 +35,7 @@ class RestaurantResultsController < ApplicationController
     @restaurant_result.phone = restaurant.formatted_phone_number
     @restaurant_result.rating = restaurant.rating
     @restaurant_result.price = restaurant.price_level
+    @restaurant_result.place_id = restaurant.place_id
 
     if restaurant.photos.empty?
       @restaurant_result.image_1 = "https://source.unsplash.com/random?restaurant"
@@ -61,6 +62,7 @@ class RestaurantResultsController < ApplicationController
 
   def show
     @restaurant_result = RestaurantResult.find(params[:id])
+    @map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC7RqmEQxoPXVBTW4IJheItgSO01evh1Rk&q=place_id:#{@restaurant_result.restaurant.place_id}"
   end
 
   def index

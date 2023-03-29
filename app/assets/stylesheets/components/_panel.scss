@@ -2,7 +2,7 @@
   background-color: #89608E;
   border: 4px solid white;
   border-radius: 20px;
-  padding: 30px;
+  padding: 15px;
   margin-bottom: 20px;
 }
 
@@ -35,12 +35,18 @@
   text-align: center;
 }
 
+.panel p {
+  margin-top: 30px;
+  text-align: center;
+}
+
 // Styles for Restaurant page
 .container-restaurant-show {
   margin: 0 auto;
+  width: 60%;
 
   .image-grid {
-    --gap: 16px;
+    --gap: 15px;
     --num-cols: 2;
     --row-height: 300px;
 
@@ -63,9 +69,28 @@
     grid-column: span 2;
   }
 
-  // .image-grid-row-2 {
-  //   grid-row: span 1;
-  // }
+  .panel {
+    background-color: #825B86;
+  }
+
+  .map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    iframe {
+      width: 90%;
+      height: 300px;
+      border-radius: 8px;
+    }
+  }
+
+  .name {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
 
   /* Anything udner 1024px */
   @media screen and (max-width: 1024px) {
@@ -73,8 +98,13 @@
       --num-cols: 2;
       --row-height: 180px;
     }
+    width: 95%;
 
+    .panel p {
+      font-size: 12px;
+    }
+    .text, i {
+      font-size: 12px;
+    }
   }
-
-
 }
