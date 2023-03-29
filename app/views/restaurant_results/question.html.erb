@@ -1,3 +1,6 @@
+<% unless params[:coordinates].present? %>
+<div data-controller="geolocation"></div>
+<% end %>
 <div class="container" data-controller="time-saved">
   <h1 class="mt-5 page-title">What to eat?</h1>
   <%= render "form" %>

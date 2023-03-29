@@ -7,6 +7,9 @@ import { application } from "./application"
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
+import GeolocationController from "./geolocation_controller"
+application.register("geolocation", GeolocationController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
