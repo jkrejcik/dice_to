@@ -112,7 +112,7 @@ class RestaurantResultsController < ApplicationController
 
   def colour
     @colour_cuisine_key = {
-      orange: "French", brown: "Chinese", pink: "Chinese", blue: "Italian", green: "Greek",
+      orange: "French", brown: "Chinese", pink: "Vegetarian", blue: "Italian", green: "Greek",
       red: "Spanish", yellow: "Lebanese", purple: "Turkey", violet: "Thai", emerald: "Indian",
       grey: "Mexican", jasmine: "American"
     }
