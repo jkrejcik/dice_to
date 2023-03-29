@@ -1,5 +1,5 @@
 <div data-controller="question">
-  <%= render "shared/steps" %>
+  <%= render "steps" %>
   <%= form_for @restaurant_result, url: restaurant_questions_path, method: :post do |f| %>
 
     <div class="tab d-none" data-question-target="all">
