@@ -8,6 +8,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "pluralize": "^8.0.0",
+    "star-rating.js": "^4.3.0",
     "stimulus-carousel": "^5.0.1",
     "stimulus-rails-nested-form": "^4.1.0",
     "webpack": "^5.75.0",

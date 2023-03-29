@@ -1,0 +1,44 @@
+<li class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= result.movie.image %>)" data-controller="form-submit">
+<%= link_to "", movie_suggestion_path(result.id), class: "card-img-top" %>
+<h3 class="card-title"><%= result.movie.title %></h3>
+    <span class="column time-ago position-absolute bottom-0 end-0">
+      <div>
+        <% if result.rating.nil? %>
+          <%= simple_form_for(@review, 
+            html: { 
+              data: {  
+                form_submit_target: "form", 
+                action: "click->form-submit#submit"
+                }
+              }) do |f| 
+          %>
+            <%= f.input :rating, collection: (1..5).to_a, label: false, input_html: {data: { controller: "star-rating" } }  %>
+            <%= hidden_field_tag "movie_result", result.id %>
+            <%= f.submit class: "d-none" %>
+          <% end %>
+        <% else %>
+          <% result.rating.times do %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" style="width: 22px; height: 22px; margin-right: -4px; margin-bottom: 18px;">
+              <path fill="#ffb900" d="M9 0L6 6l-6 .75 4.12 4.62L3 18l6-3 6 3-1.13-6.63L18 6.75 12 6z"/>
+            </svg>
+          <% end %>
+        <% end %>
+      </div>
+      <div>
+        <% case (@today - result.created_at).round %>
+          <% when 0..60 %>
+            < 1 minute ago
+          <% when 61..3600 %>
+            <%= ((@today - result.created_at) / 60).round %> minutes ago
+          <% when 3601..7199 %>
+            1 hour ago
+          <% when 7200..86400 %>
+            <%= ((@today - result.created_at) / 3600).round %> hours ago
+          <% when 86401..172799 %>
+            yesterday
+          <% else %>
+          <%= ((@today - result.created_at) / 86400).round %> days ago
+        <% end %>
+      </div>
+    </span>
+</li>

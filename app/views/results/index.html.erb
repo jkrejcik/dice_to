@@ -5,29 +5,7 @@
         <h3>Watch</h3>
     </li>
     <% @movie_results.each do |result| %>
-      <li class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= result.movie.image %>)">
-      <%= link_to "", movie_suggestion_path(result.id), class: "card-img-top" %>
-        <h3 class="card-title"><%= result.movie.title %></h3>
-          <span class="time-ago position-absolute bottom-0 end-0">
-            <% case (@today - result.created_at).round %>
-              <% when 0..60 %>
-                < 1 minute ago
-              <% when 61..3600 %>
-                <%= ((@today - result.created_at) / 60).round %> minutes ago
-              <% when 3601..7199 %>
-                1 hour ago
-              <% when 7200..86400 %>
-                <%= ((@today - result.created_at) / 3600).round %> hours ago
-              <% when 86401..172799 %>
-                yesterday
-              <% else %>
-              <%= ((@today - result.created_at) / 86400).round %> days ago
-            <% end %>
-          </span>
-        <%# <div class="card-link-wrapper">
-          <a href="" class="card-link">Details</a>
-        </div> %>
-      </li>
+      <%= render "movie_card", :result => result %>  
     <% end %>
   </ul>
 
@@ -100,3 +78,16 @@
     <% end %>
   </ul>
 </div>
+
+<%# <script>
+  let stars = document.querySelectorAll("#star")
+  let form = document.querySelectorAll("#form")
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      form.submit
+      console.log("Event listeners")
+    })
+  })
+  // console.log(stars)
+
+</script> %>

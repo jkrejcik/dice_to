@@ -7,8 +7,12 @@ import { application } from "./application"
 import CarouselController from "./carousel_controller"
 application.register("carousel", CarouselController)
 
+import FormSubmitController from "./form_submit_controller"
+application.register("form-submit", FormSubmitController)
+
 import GeolocationController from "./geolocation_controller"
 application.register("geolocation", GeolocationController)
+
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -18,6 +22,9 @@ application.register("nested-form", NestedFormController)
 
 import QuestionController from "./question_controller"
 application.register("question", QuestionController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)
 
 import TimeSavedController from "./time_saved_controller"
 application.register("time-saved", TimeSavedController)
