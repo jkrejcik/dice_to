@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Routes for pages
   root to: "pages#home"
   get "categories", to: "pages#category"
+  get "coming-soon", to: "pages#coming_soon"
 
   # Routes for results of all rolls
   get "history", to: "results#index"
