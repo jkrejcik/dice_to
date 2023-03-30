@@ -1,13 +1,22 @@
 <div class="container mt-5" data-controller="time-saved">
     <div class="movie panel" data-time-saved-target="panel">
-      <div class="d-flex justify-content-center mb-2">
-          <%= image_tag "#{@movie_result.movie.image}", width: 300 %>
-      </div>
-      <h1><%= @movie_result.movie.title %></h1>
+
+      <%= image_tag "#{@movie_result.movie.image}" %>
+      <h1>
+        <%= @movie_result.movie.title %>
+      </h1>
         <% unless @movie_result.rating.nil? %>
           <p>Your Rating: <%= @movie_result.rating %></p>
         <% end  %>
-      <p><%= @movie_result.movie.overview %></p>
+      <div class="panel-div">
+        <h5>
+          Overview
+        </h5> 
+        <hr>
+      </div>
+      <p>
+        <%= @movie_result.movie.overview %>
+      </p>
       <div>
 
         <%= hidden_field_tag "", @movie_result.time_taken, class: "time" %>
@@ -25,9 +34,10 @@
                 <div class="time">
                   <%= @movie_result.time_taken %>
                 </div>
-                <%= link_to "◀ Back to Feed", history_path, class: "accept-btn" %>
+                <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn" %>
               </div>
         <% end %>
       </div>
     </div>
+    <br>
 </div>

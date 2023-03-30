@@ -1,11 +1,11 @@
 .accept-btn {
     color: black;
-    font-size: 32px;
+    font-size: 30px;
     font-family: 'Monument Extended Ultrabold';
     background: none;
     border: none;
     margin: 0;
-    padding: 4px;
+    padding: 24px;
     cursor: pointer;
     text-shadow: 3px 2px 1px white;
     transition: 0.1s;
@@ -19,12 +19,12 @@
 
 .back-to-roll-btn {
     color: white;
-    font-size: 32px;
+    font-size: 30px;
     font-family: 'Monument Extended Ultrabold';
     background: none;
     border: none;
     margin: 0;
-    padding: 4px;
+    padding: 24px;
     cursor: pointer;
     text-shadow: 3px 2px 1px black;
     transition: 0.1s;
@@ -38,10 +38,13 @@
 
 @media screen and (max-width: 480px) {
     .back-to-roll-btn {
-        font-size: 28px;
+        font-size: 22px;
+        text-shadow: 2px 2px 1px black;
     }
 
     .accept-btn {
-        font-size: 28px;
+        font-size: 22px;
+        text-shadow: 2px 2px 1px white;
     }
+    
 }
