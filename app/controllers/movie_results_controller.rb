@@ -77,7 +77,7 @@ class MovieResultsController < ApplicationController
     when "neutral"
       return []
     when "bad"
-      ret[]
+      []
     else
       []
     end
