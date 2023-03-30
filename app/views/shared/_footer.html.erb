@@ -21,7 +21,7 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Categories
+            <i class="fa-solid fa-mobile-screen-button me-3"></i>Categories
           </h6>
           <p>
             <%= link_to "Watch", movie_questions_path %>
@@ -39,13 +39,13 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4 text-reset">
-            Total time saved
+            <i class="fa-regular fa-face-smile me-3"></i>Decisions
           </h6>
           <p>
-            <a href="#!" class="text-reset">Many minutes</a>
+            Total: <%= @total_decisions %>
           </p>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-github"></i>
+          <a href="https://github.com/jkrejcik/dice_to" target="_blank" class="me-4 text-reset">
+            Repository: <i class="fab fa-github"></i>
           </a>
         </div>
         <!-- Grid column -->
@@ -73,7 +73,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2023 Copyright:
-    <a class="text-reset fw-bold" href="www.diceto.net">diceto.net</a>
+    <a class="text-reset fw-bold" href="http://www.diceto.net/">diceto.net</a>
   </div>
   <!-- Copyright -->
 </footer>
