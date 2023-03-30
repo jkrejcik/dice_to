@@ -15,7 +15,9 @@ export default class extends Controller {
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-    location.assign(`/restaurant-questions?coordinates=${crd.latitude},${crd.longitude}`)
+    // location.assign(`/restaurant-questions?coordinates=${crd.latitude},${crd.longitude}`)
+    const input = document.querySelector("input[name=coordinates]")
+    input.value = `${crd.latitude},${crd.longitude}`
   }
 
   error(err) {

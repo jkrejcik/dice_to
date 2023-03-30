@@ -1,7 +1,6 @@
 <div data-controller="question">
   <%= render "steps" %>
   <%= form_for @restaurant_result, url: restaurant_questions_path, method: :post do |f| %>
-
     <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
         <h2 style="text-align: center;">What's your favourite colour?</h2>
@@ -18,7 +17,7 @@
 
     <div class="d-flex mt-5 justify-content-center">
       <%= hidden_field_tag :time_taken, :time %>
-      <%= hidden_field_tag :coordinates, params[:coordinates] %>
+      <%= hidden_field_tag :coordinates, "" %>
       <div>
         <input type="submit" value="ROLL" class="big-button" data-time-saved-target="roll" data-action="click->time-saved#time">
       </div>
