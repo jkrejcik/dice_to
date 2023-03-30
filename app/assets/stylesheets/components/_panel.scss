@@ -37,7 +37,7 @@
 
 .panel p {
   margin-top: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 // Styles for Restaurant page
@@ -71,6 +71,10 @@
 
   .panel {
     background-color: #825B86;
+  }
+
+  .panel p {
+    text-align: center;
   }
 
   .map {

@@ -1,8 +1,8 @@
 <li class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= result.movie.image %>)" data-controller="form-submit">
 <%= link_to "", movie_suggestion_path(result.id), class: "card-img-top" %>
 <h3 class="card-title"><%= result.movie.title %></h3>
-    <span class="column time-ago position-absolute bottom-0 end-0">
-      <div>
+    <span class="column time-ago position-absolute bottom-0">
+      <div style="">
         <% if result.rating.nil? %>
           <%= simple_form_for(@review, 
             html: { 
@@ -18,10 +18,11 @@
           <% end %>
         <% else %>
           <% result.rating.times do %>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" style="width: 22px; height: 22px; margin-right: -4px; margin-bottom: 18px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class='star-rating' >
               <path fill="#ffb900" d="M9 0L6 6l-6 .75 4.12 4.62L3 18l6-3 6 3-1.13-6.63L18 6.75 12 6z"/>
             </svg>
           <% end %>
+          <%# style="width: 22px; height: 22px; margin-right: -4px; margin-bottom: 18px;", %>
         <% end %>
       </div>
       <div>
