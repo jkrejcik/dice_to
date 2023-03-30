@@ -1,15 +1,60 @@
-<div class="container mt-5" data-controller="time-saved">
+<div class="container-restaurant-show mt-5" data-controller="time-saved">
     <div class="restaurant panel" data-time-saved-target="panel">
-      <div class="d-flex justify-content-center mb-2">
-          <%= image_tag "#{@restaurant_result.restaurant.image_1}", width: 300 %>
+
+      <div class="d-fex justify-content-between mt-2">
+        <span class="name"><%= @restaurant_result.restaurant.name %> - <%= @restaurant_result.restaurant.rating %> ⭐️</span>
       </div>
-      <h1><%= @restaurant_result.restaurant.name %></h1>
-      <p><%= @restaurant_result.restaurant.city %></p>
+      <hr>
+      <div class="d-flex justify-content-around mb-2">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-utensils"></i>
+          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.cuisine %></span>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <span class="mx-2 pt-1">
+            <% if @restaurant_result.restaurant.price.nil? %>
+              <i class="fa-solid fa-dollar-sign"></i>
+            <% else %>
+              <% @restaurant_result.restaurant.price.times do %>
+                <i class="fa-solid fa-dollar-sign"></i>
+              <% end %>
+            <% end %>
+          </span>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-phone"></i>
+          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.phone %></span>
+        </div>
+      </div>
+
+      <div class="image-grid mb-3">
+        <%= image_tag "#{@restaurant_result.restaurant.image_1}", class:"image-grid-col-2 image-grid-row-2" %>
+        <%= image_tag "#{@restaurant_result.restaurant.image_2}", class:"" %>
+        <%= image_tag "#{@restaurant_result.restaurant.image_3}", class:"" %>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.address %></span>
+        </div>
+      </div>
+
+      <div class="map mb-3">
+         <iframe
+          frameborder="0" style="border:0"
+          referrerpolicy="no-referrer-when-downgrade"
+          src=<%= @map_url %>
+          allowfullscreen>
+        </iframe>
+      </div>
+
       <div>
         <%= hidden_field_tag "", @restaurant_result.time_taken, class: "time" %>
         <% if @restaurant_result.accepted.nil? %>
           <%= form_for @restaurant_result, url: restaurant_suggestion_path(@restaurant_result), method: :patch do |f| %>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-evenly">
               <%= f.submit "Accept", class: "accept-btn", "data-time-saved-target": "accept", "data-action": "click->time-saved#final"%>
               <%= f.submit "Reject", class: "back-to-roll-btn" %>
               <%= hidden_field_tag :time_taken, :time %>

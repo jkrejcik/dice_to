@@ -2,7 +2,7 @@
   background-color: #89608E;
   border: 4px solid white;
   border-radius: 20px;
-  padding: 30px;
+  padding: 15px;
   margin-bottom: 20px;
 }
 
@@ -33,4 +33,78 @@
   padding: 30px;
   margin: 60px;
   text-align: center;
+}
+
+.panel p {
+  margin-top: 30px;
+  text-align: center;
+}
+
+// Styles for Restaurant page
+.container-restaurant-show {
+  margin: 0 auto;
+  width: 60%;
+
+  .image-grid {
+    --gap: 15px;
+    --num-cols: 2;
+    --row-height: 300px;
+
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
+  }
+
+  .image-grid>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .image-grid-col-2 {
+    grid-column: span 2;
+  }
+
+  .panel {
+    background-color: #825B86;
+  }
+
+  .map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    iframe {
+      width: 90%;
+      height: 300px;
+      border-radius: 8px;
+    }
+  }
+
+  .name {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Anything udner 1024px */
+  @media screen and (max-width: 1024px) {
+    .image-grid {
+      --num-cols: 2;
+      --row-height: 180px;
+    }
+    width: 95%;
+
+    .panel p {
+      font-size: 12px;
+    }
+    .text, i {
+      font-size: 12px;
+    }
+  }
 }

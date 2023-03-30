@@ -23,6 +23,11 @@ class RestaurantResultsController < ApplicationController
 
     restaurant = @client.spots(latitude, longitude, :name => cuisine, :types => 'restaurant', :radius => 500, :detail => true).sample
 
+    # If no restaurant is found withing default 500m then there is new search query with incread radius of 5km.
+    if restaurant.nil?
+      restaurant = @client.spots(latitude, longitude, :name => cuisine, :types => 'restaurant', :radius => 5000, :detail => true).sample
+    end
+
     @restaurant_result.name = restaurant.name
     @restaurant_result.city = restaurant.city
     @restaurant_result.cuisine = cuisine
@@ -30,6 +35,7 @@ class RestaurantResultsController < ApplicationController
     @restaurant_result.phone = restaurant.formatted_phone_number
     @restaurant_result.rating = restaurant.rating
     @restaurant_result.price = restaurant.price_level
+    @restaurant_result.place_id = restaurant.place_id
 
     if restaurant.photos.empty?
       @restaurant_result.image_1 = "https://source.unsplash.com/random?restaurant"
@@ -56,6 +62,7 @@ class RestaurantResultsController < ApplicationController
 
   def show
     @restaurant_result = RestaurantResult.find(params[:id])
+    @map_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC7RqmEQxoPXVBTW4IJheItgSO01evh1Rk&q=place_id:#{@restaurant_result.restaurant.place_id}"
   end
 
   def index
