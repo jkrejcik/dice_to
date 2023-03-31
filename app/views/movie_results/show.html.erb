@@ -5,13 +5,21 @@
       <h1>
         <%= @movie_result.movie.title %>
       </h1>
-        <% unless @movie_result.rating.nil? %>
-          <p>Your Rating: <%= @movie_result.rating %></p>
-        <% end  %>
       <div class="panel-div">
-        <h5>
-          Overview
-        </h5> 
+        <div class="d-flex justify-content-between position-relative">
+          <h5>
+            Overview
+          </h5>
+          <% unless @movie_result.rating.nil? %>
+          <div class="position-absolute end-0">
+            <% @movie_result.rating.times do %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class='star-rating-show' >
+                  <path fill="#ffb900" d="M9 0L6 6l-6 .75 4.12 4.62L3 18l6-3 6 3-1.13-6.63L18 6.75 12 6z"/>
+                </svg>
+            <% end %>
+          </div>
+          <% end  %>
+         </div>
         <hr>
       </div>
       <p>
@@ -29,11 +37,21 @@
             </div>
             <% end %>
             <% else %>
-              <div>
-                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
-                <div class="time">
-                  <%= @movie_result.time_taken %>
+              <div class="mt-4">
+                <div class="panel-div">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <i class="fa-solid fa-clock fa-xl mb-3" style="color: #ffffff;"></i>
+                    <h5 class="time text-end">
+                      <%= @movie_result.time_taken %>
+                    </h5> 
+                  </div>
+
+                  <hr>
                 </div>
+                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
+                <%# <div class="time">
+                  <%= @movie_result.time_taken %>
+                <%# </div> %>
                 <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn" %>
               </div>
         <% end %>
