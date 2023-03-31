@@ -1,33 +1,54 @@
 .container-custom-show {
   margin: 0 auto;
   .panel-custom-show {
+    background-image: url(dice_dark.png);
     background-color: #FFCA14;
     border: 8px solid white;
     border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    position: relative;
 
     .answer {
       font-size: 40px;
-      background-color: black;
-      color: #01C97B;
+      // background-color: black;
+      color: #FFCA14;
       font-weight: 800;
-      border: 8px solid white;
-      border-radius: 12px;
-      padding: 30px;
-      width: 60%;
+      // border: 8px solid white;
+      // border-radius: 12px;
+      // padding: 30px;
+      // width: 60%;
       margin: 0 auto;
       text-align: center;
+    }
+
+    hr {
+      height: 5px;
+      background-color: #01C97B;
+      opacity: 1;
+      z-index: 10;
+      // margin: -4px auto 0 auto;
     }
 
     h2, p {
       color: #5C78FF;
       text-align: center;
     }
+
+
   }
 
   @media (max-width: 480px) {
+
+    .panel-custom-show {
+      height: 320px; 
+    }
+
     .panel-custom-show > .answer {
       padding: 10px;
-      font-size: 20px;
+      font-size: 28px;
     }
   }
 }
