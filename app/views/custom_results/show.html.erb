@@ -1,13 +1,10 @@
-<div class="container w-75 mt-5">
-  
-  <div class="panel">
-    <p>Your question: <p>
-    <h4><%= @custom_result.question %></h4>
-    <br>
-    <h1>Your answer: </h1>
-    <div class="answer d-flex justify-content-center">
-      <%= @custom_result.answer %><p> !!</p>
+<div class="container-custom-show w-75 mt-5">
+  <div class="panel-custom-show">
+    <h2 class="my-5"><%= @custom_result.question %></h2>
+
+    <div class="answer d-flex justify-content-center mb-5">
+      <%= @custom_result.answer %>
     </div>
-    <%= link_to "Categories", categories_path, class: "go-to-categories-btn" %>
+    <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn"%>
   </div>
 </div>
