@@ -1,75 +1,104 @@
 <div class="container-restaurant-show mt-5" data-controller="time-saved">
     <div class="restaurant panel" data-time-saved-target="panel">
 
-      <div class="d-fex justify-content-between mt-2">
-        <span class="name mb-2"><%= @restaurant_result.restaurant.name %> - <%= @restaurant_result.restaurant.rating %> ⭐️</span>
-      </div>
-      <hr>
-      <div class="d-flex justify-content-around my-2">
-        <div class="d-flex align-items-center">
-          <i class="fa-solid fa-utensils"></i>
-          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.cuisine %></span>
-        </div>
-        <div class="d-flex align-items-center">
-          <i class="fa-solid fa-sack-dollar"></i>
-          <span class="mx-2 d-block">
-            <% if @restaurant_result.restaurant.price.nil? %>
-              <span class="text-dolar">$</span>
-            <% else %>
-              <% @restaurant_result.restaurant.price.times do %>
-              <span class="text-dolar">$</span>
-              <% end %>
+      <%= image_tag "#{@restaurant_result.restaurant.image_1}" %>
+      <h1>
+        <%= @restaurant_result.restaurant.name %>
+      </h1>
+      <%# <div class="image-grid mb-3"> %>
+        <%#= image_tag "#{@restaurant_result.restaurant.image_1}", class:"image-grid-col-2 image-grid-row-2" %>
+        <%#= image_tag "#{@restaurant_result.restaurant.image_2}", class:"" %>
+        <%#= image_tag "#{@restaurant_result.restaurant.image_3}", class:"" %>
+      <%# </div> %>
+     <div class="panel-div">
+        <div class="d-flex justify-content-between position-relative">
+          <h5>
+            Details
+          </h5>
+          <div class="position-absolute end-0">
+            <% @restaurant_result.restaurant.rating.floor.times do %>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" class='star-rating-show' >
+                  <path fill="#000000" d="M9 0L6 6l-6 .75 4.12 4.62L3 18l6-3 6 3-1.13-6.63L18 6.75 12 6z"/>
+                </svg>
             <% end %>
-          </span>
+          </div>
         </div>
-        <div class="d-flex align-items-center">
-          <i class="fa-solid fa-phone"></i>
-          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.phone %></span>
+      <hr>
+    </div>
+      
+      <div class="panel-detail d-flex my-3">
+        
+        <div class="col-lg-4 col-xs-8 col-s-8">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-utensils fa-lg" style="color: #000000;"></i>
+            <span class="mx-3 pt-1 text"><%= @restaurant_result.restaurant.cuisine %></span>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-coins fa-lg" style="color: #000000;"></i>
+            <span class="mx-3 d-block">
+              <% if @restaurant_result.restaurant.price.nil? %>
+                <span class="text-dolar">€</span>
+              <% else %>
+                <% @restaurant_result.restaurant.price.times do %>
+                <span class="text-dolar"><em>€</em></span>
+                <% end %>
+              <% end %>
+            </span>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa-solid fa-phone fa-lg" style="color: #000000;"></i>
+            <span class="mx-3 pt-1 text"><%= @restaurant_result.restaurant.phone %></span>
+          </div>
+          <div class="d-flex justify-content-center mb-3">
+            <div class="d-flex">
+              <i class="fa-solid fa-map-location-dot mt-3 fa-lg" style="color: #000000;"></i>
+              <span class="mx-3 pt-1 text"><%= @restaurant_result.restaurant.address %></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="map col-lg-8 col-xs-12 col-s-12">
+          <iframe
+            frameborder="0" style="border:0"
+            referrerpolicy="no-referrer-when-downgrade"
+            src=<%= @map_url %>
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
-      <div class="image-grid mb-3">
-        <%= image_tag "#{@restaurant_result.restaurant.image_1}", class:"image-grid-col-2 image-grid-row-2" %>
-        <%= image_tag "#{@restaurant_result.restaurant.image_2}", class:"" %>
-        <%= image_tag "#{@restaurant_result.restaurant.image_3}", class:"" %>
-      </div>
 
-      <div class="d-flex justify-content-center mb-3">
-        <div class="d-flex align-items-center">
-          <i class="fa-solid fa-map-location-dot"></i>
-          <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.address %></span>
-        </div>
-      </div>
 
-      <div class="map mb-5">
-         <iframe
-          frameborder="0" style="border:0"
-          referrerpolicy="no-referrer-when-downgrade"
-          src=<%= @map_url %>
-          allowfullscreen>
-        </iframe>
-      </div>
+
 
       <div>
         <%= hidden_field_tag "", @restaurant_result.time_taken, class: "time" %>
         <% if @restaurant_result.accepted.nil? %>
           <%= form_for @restaurant_result, url: restaurant_suggestion_path(@restaurant_result), method: :patch do |f| %>
-            <div class="d-flex justify-content-evenly">
+            <div class="d-flex justify-content-between">
               <%= f.submit "Accept", class: "accept-btn", "data-time-saved-target": "accept", "data-action": "click->time-saved#final"%>
               <%= f.submit "Reject", class: "back-to-roll-btn" %>
               <%= hidden_field_tag :time_taken, :time %>
             </div>
             <% end %>
             <% else %>
-              <div>
-                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
-                <div class="time">
-                  <%= @restaurant_result.time_taken %>
+              <div class="mt-4">
+                <div class="panel-div">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <i class="fa-solid fa-clock fa-xl mb-3" style="color: #000000;"></i>
+                    <h5 class="time text-end">
+                      <%= @restaurant_result.time_taken %>
+                    </h5> 
+                  </div>
+
+                  <hr>
                 </div>
-                <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn"%>
+                <p>Based on overthinkers everywhere, you saved a lot of time on this decision!</p>
+                <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn" %>
               </div>
         <% end %>
       </div>
     </div>
+    <br>
     <br>
 </div>
