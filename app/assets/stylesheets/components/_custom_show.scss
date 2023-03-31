@@ -1,0 +1,33 @@
+.container-custom-show {
+  margin: 0 auto;
+  .panel-custom-show {
+    background-color: #FFCA14;
+    border: 8px solid white;
+    border-radius: 20px;
+
+    .answer {
+      font-size: 40px;
+      background-color: black;
+      color: #01C97B;
+      font-weight: 800;
+      border: 8px solid white;
+      border-radius: 12px;
+      padding: 30px;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2, p {
+      color: #5C78FF;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .panel-custom-show > .answer {
+      padding: 10px;
+      font-size: 20px;
+    }
+  }
+}
