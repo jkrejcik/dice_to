@@ -1,10 +1,13 @@
-<div class="container-custom-show w-75 mt-5">
+<br>
+
+<div class="container-custom-show col-lg-5 col-sm-12 mt-5">
   <div class="panel-custom-show">
     <h2 class="my-5"><%= @custom_result.question %></h2>
 
     <div class="answer d-flex justify-content-center mb-5">
       <%= @custom_result.answer %>
+      <hr>
     </div>
-    <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn"%>
+    <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn position-absolute bottom-0"%>
   </div>
 </div>
