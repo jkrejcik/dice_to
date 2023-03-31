@@ -17,7 +17,7 @@ export default class extends Controller {
         let minutes = Math.floor(timeTaken / 60) % 60;
         timeTaken -= minutes * 60
         let seconds = (timeTaken % 60).toFixed(0)
-        time.innerText = Pluralize('minute', minutes, true) + `, ${seconds} seconds`
+        time.innerText = Pluralize('min', minutes, true) + `, ${seconds} seconds`
       }
       else {
         time.innerText = timeTaken.toFixed(2) + " seconds"

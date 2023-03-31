@@ -11,7 +11,7 @@
   font-style: italic;
   font-size: 40px;
   letter-spacing: 1px;
-  // text-shadow: 3px 2px 1px #FFCA14;
+  text-shadow: 3px 2px 1px black;
   padding: 0 40px;
   margin: 40px 0;
 }
@@ -30,16 +30,16 @@
   padding: 0 40px;
 }
 
-.panel .time {
-  font-size: 24px;
-  background-color: black;
-  color: #5C78FF;
-  border: 8px solid white;
-  border-radius: 12px;
-  padding: 30px;
-  margin: 60px;
-  text-align: center;
-}
+// .panel .time {
+//   font-size: 24px;
+//   background-color: black;
+//   color: #5C78FF;
+//   border: 8px solid white;
+//   border-radius: 12px;
+//   padding: 30px;
+//   margin: 60px;
+//   text-align: center;
+// }
 
 .panel .answer {
   font-size: 40px;
@@ -92,6 +92,7 @@
   .panel-div {
     font-size: 20px;
     padding: 0 24px;
+    justify-content: space-between;
   }
 
 }
