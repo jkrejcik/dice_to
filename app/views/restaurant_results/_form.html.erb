@@ -1,5 +1,5 @@
 <div data-controller="question">
-  <%= render "steps" %>
+  <%#= render "steps" %>
   <%= form_for @restaurant_result, url: restaurant_questions_path, method: :post do |f| %>
     <div class="tab d-none" data-question-target="all">
       <div class="d-flex justify-content-center">
@@ -11,7 +11,7 @@
     <div style="overflow:auto;">
       <div class="d-flex justify-content-center">
         <%# <button type="button" id="prevBtn">Previous</button> %>
-        <button type="button" id="nextBtn" data-question-target="next" data-action="click->question#next">Next</button>
+        <%# <button type="button" id="nextBtn" data-question-target="next" data-action="click->question#next">Next</button> %>
       </div>
     </div>
 
