@@ -226,4 +226,13 @@
       font-size: 20px;
     }
   }
+
+  @media screen and (max-width: 575px) {
+    .map {
+      iframe {
+        height: 300px;
+      }
+      margin: 20px -10px;
+    }
+  }
 }
