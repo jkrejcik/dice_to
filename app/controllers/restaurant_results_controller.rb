@@ -21,6 +21,12 @@ class RestaurantResultsController < ApplicationController
       cuisine = items[rand(items.length)]
     end
 
+    sleep(3)
+    if latitude.nil?
+      latitude = 41.398865875681906
+      longitude = 2.1989594723440535
+    end
+
     restaurant = @client.spots(latitude, longitude, :name => cuisine, :types => 'restaurant', :radius => 500, :detail => true).sample
 
     # If no restaurant is found withing default 500m then there is new search query with incread radius of 5km.
