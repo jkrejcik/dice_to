@@ -96,7 +96,7 @@
 
 }
 
-// Styles for Restaurant page
+// Styles for Restaurant show page
 .container-restaurant-show {
   margin: 0 auto;
   width: 60%;
@@ -126,7 +126,8 @@
   }
 
   .panel {
-    background-color: #825B86;
+    background-color: #FF653E;
+    padding: 10px;
   }
 
   .panel p {
@@ -164,7 +165,10 @@
       font-size: 12px;
     }
     .text, i {
-      font-size: 12px;
+      font-size: 10px;
+    }
+    .name {
+      font-size: 20px;
     }
   }
 }

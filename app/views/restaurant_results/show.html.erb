@@ -2,10 +2,10 @@
     <div class="restaurant panel" data-time-saved-target="panel">
 
       <div class="d-fex justify-content-between mt-2">
-        <span class="name"><%= @restaurant_result.restaurant.name %> - <%= @restaurant_result.restaurant.rating %> ⭐️</span>
+        <span class="name mb-2"><%= @restaurant_result.restaurant.name %> - <%= @restaurant_result.restaurant.rating %> ⭐️</span>
       </div>
       <hr>
-      <div class="d-flex justify-content-around mb-2">
+      <div class="d-flex justify-content-around my-2">
         <div class="d-flex align-items-center">
           <i class="fa-solid fa-utensils"></i>
           <span class="mx-2 pt-1 text"><%= @restaurant_result.restaurant.cuisine %></span>
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="map mb-3">
+      <div class="map mb-5">
          <iframe
           frameborder="0" style="border:0"
           referrerpolicy="no-referrer-when-downgrade"
@@ -66,9 +66,10 @@
                 <div class="time">
                   <%= @restaurant_result.time_taken %>
                 </div>
-                <%= link_to "◀ Back to Feed", history_path, class: "accept-btn" %>
+                <%= link_to "◀ Back to Feed", history_path, class: "d-flex accept-btn"%>
               </div>
         <% end %>
       </div>
     </div>
+    <br>
 </div>
