@@ -12,12 +12,12 @@
         </div>
         <div class="d-flex align-items-center">
           <i class="fa-solid fa-sack-dollar"></i>
-          <span class="mx-2 pt-1">
+          <span class="mx-2 d-block">
             <% if @restaurant_result.restaurant.price.nil? %>
-              <i class="fa-solid fa-dollar-sign"></i>
+              <span class="text-dolar">$</span>
             <% else %>
               <% @restaurant_result.restaurant.price.times do %>
-                <i class="fa-solid fa-dollar-sign"></i>
+              <span class="text-dolar">$</span>
               <% end %>
             <% end %>
           </span>

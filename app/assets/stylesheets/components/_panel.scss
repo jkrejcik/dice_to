@@ -146,6 +146,10 @@
     }
   }
 
+  .text-dolar {
+    font-size: 14px;
+    outline: 0;
+  }
   .name {
     font-size: 30px;
     font-weight: bold;
@@ -164,7 +168,7 @@
     .panel p {
       font-size: 12px;
     }
-    .text, i {
+    .text, i, .text-dolar {
       font-size: 10px;
     }
     .name {
