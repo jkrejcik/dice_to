@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Make decisions faster, save time and have fun with the results! Don't know what movie to watch tonight? Where to go for dinner? Or you have other desision dilemma? Movies come from TBDB API and restaurants are using user's current location and Google Maps API. DiceTo is a final team project of Jan/Ronan/Jaroslav as a part of Web Developement bootcamp in LeWagon.
